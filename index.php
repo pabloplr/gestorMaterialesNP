@@ -38,10 +38,10 @@
                         <div class="container-login100-form-btn p-t-10">
                             <button class="login100-form-btn" type="submit" name="submit">Acceder</button>
                         </div>
-
-                        <div class="text-center p-t-30 ">
+                        <!-- todo borrar -->
+                        <!-- <div class="text-center p-t-30 ">
                             <a class="txt1" href="#">Acceso Alumnos</a>
-                        </div>
+                        </div> -->
                     </form>
 
                     <?php

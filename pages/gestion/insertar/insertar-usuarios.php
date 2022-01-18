@@ -79,6 +79,13 @@
                                 <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Sánchez" autocomplete="off">
                             </div>
                         </div>
+                        <!-- TODO correo -->
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Correo:</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="" name="" class="form-control" placeholder="dela@campuscamara.es" autocomplete="off">
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Curso:</label>
                             <div class="col-sm-10">
