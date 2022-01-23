@@ -79,9 +79,10 @@
                             <table>
                                 <tbody>
                                     <?php
-                                    error_reporting(0);
-                                    $conexionBD = mysqli_connect("localhost", "root", "", "bd_prestamos");
-                                    $consulta = mysqli_query($conexionBD, "SELECT * FROM prestamos");
+                                            include '../../datosBBDD.php';
+                                            error_reporting(0);
+                                            $conexionBD = mysqli_connect($servername, $username, $password, $database);
+                                            $consulta = mysqli_query($conexionBD, "SELECT * FROM prestamos");
 
                                     while ($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
                                         echo "<tr>";

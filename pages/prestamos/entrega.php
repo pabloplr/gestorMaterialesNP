@@ -106,8 +106,9 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-dm-12 col-12 my-5 text-center">
                         <select class="form-select form-select-sm w-50 caract" aria-label="form-select-sm example" name="material">
                             <?php
-                                error_reporting(0);
-                                $conexionBD = mysqli_connect("localhost", "root", "", "bd_prestamos");
+                                   include '../../datosBBDD.php';
+                                   error_reporting(0);
+                                   $conexionBD = mysqli_connect($servername, $username, $password, $database);
                                 
                                 
                                 if (isset($_POST["botonBuscar"])){

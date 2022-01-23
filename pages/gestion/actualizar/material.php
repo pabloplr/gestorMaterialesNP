@@ -36,9 +36,10 @@
                         </div>
                         
                         <?php
-                            error_reporting(0);
-                            if (isset($_POST["continuar"])){
-                                $conn = mysqli_connect("localhost", "root", "", "bd_prestamos");
+                                include '../../../datosBBDD.php';
+                                error_reporting(0);
+                                if (isset($_POST["continuar"])){
+                                $conn = mysqli_connect($servername, $username, $password, $database);
                                 $num_serie = $_POST["num_serie"];
 
                                 if ($resultado = mysqli_query($conn, "SELECT num_serie FROM materiales WHERE num_serie = '$num_serie'")) {

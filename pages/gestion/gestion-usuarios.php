@@ -86,14 +86,12 @@
             </div>
             
             <?php     
+                    include '../../datosBBDD.php';
                 error_reporting(0);
                 
                 if (isset($_POST['eliminar'])) {
                     //Conexión con la Base de Datos.
-                    $servername = "localhost";
-                    $database = "bd_prestamos";
-                    $username = "root";
-                    $password = "";
+                    
 
                     //Crear conexión
                     $conn = new mysqli($servername, $username, $password, $database);
