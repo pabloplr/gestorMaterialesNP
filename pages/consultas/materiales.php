@@ -102,7 +102,7 @@
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td  colspan="7">
+                                        <td  colspan="8">
                                             <div class="d-flex justify-content-center">
                                                 <button class="btn  my-2 my-sm-0 btn-outline-success align-self-center ">añadir material  <i class="far fa-plus-square"></i></button>
                                             </div>
