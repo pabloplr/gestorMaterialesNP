@@ -221,8 +221,18 @@ td {
     text-align: center;
 }
 
-.column5 {
+.column5,
+.column6 {
     width: 13%;
+    text-align: center;
+}
+
+.column7 {
+    /* padding-right: 0px; */
+    width: 4%;
+    /* padding: auto; */
+    /* display: flex;
+    justify-content: center; */
 }
 
 .table100-head th {
