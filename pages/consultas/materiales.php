@@ -100,6 +100,13 @@
                         <div class="table100-body js-pscroll">
                             <table>
                                 <tbody>
+                                    <tr>
+                                        <td  colspan="7">
+                                            <div class="d-flex justify-content-center">
+                                                <button class="btn  my-2 my-sm-0 btn-outline-success align-self-center ">añadir material  <i class="far fa-plus-square"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     <?php
                                     error_reporting(0);
                                     $conexionBD = mysqli_connect("localhost", "root", "", "bd_prestamos");
