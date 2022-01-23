@@ -73,14 +73,15 @@
                         <tbody>
                             <tr>
                                 <?php
-                                    error_reporting(0);
-                                    $conexionBD = mysqli_connect("localhost", "root", "", "bd_prestamos");
-
-                                    $contador = 0;
-                                    
-                                    session_start();
-                                    $dni = $_SESSION["dni"];
-
+                                        include '../../datosBBDD.php';
+                                        error_reporting(0);
+                                        
+                                        $contador = 0;
+                                        
+                                        session_start();
+                                        $dni = $_SESSION["dni"];
+                                        
+                                        $conexionBD = mysqli_connect($servername, $username, $password, $database);
                                     $SQL = "SELECT fecha_prestamo, num_serie, fecha_maxima FROM prestamos WHERE dni = '$dni' AND fecha_devolucion IS NULL";
                                     $consulta = mysqli_query($conexionBD, $SQL);
 

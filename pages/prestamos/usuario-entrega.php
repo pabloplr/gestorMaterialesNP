@@ -35,10 +35,11 @@
                         </div>
                         
                         <?php
-                            error_reporting(0);
-                            
-                            if (isset($_POST["continuar"])){
-                                $conn = mysqli_connect("localhost", "root", "", "bd_prestamos");
+                               include '../../datosBBDD.php';
+                               error_reporting(0);
+                               
+                               if (isset($_POST["continuar"])){
+                                $conn = mysqli_connect($servername, $username, $password, $database);
                                 session_start();
                                 $dni = $_POST["dni"];
 

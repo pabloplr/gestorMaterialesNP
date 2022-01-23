@@ -57,12 +57,10 @@
             <div class="row">
 
             <?php  
+                    include '../datosBBDD.php';
                 error_reporting(0);
                 //Conexión con la BD.
-                    $servername = "localhost";
-                    $database = "bd_prestamos";
-                    $username = "root";
-                    $password = "";
+                  
 
                 //Crear conexión
                     $conn = mysqli_connect($servername, $username, $password, $database);

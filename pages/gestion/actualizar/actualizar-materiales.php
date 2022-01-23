@@ -64,10 +64,11 @@
                             <label class="col-sm-2 col-form-label">Número de Serie:</label>
                             <div class="col-sm-10">
                                 <?php
-                                    error_reporting(0);
-                                    session_start();
-                                    $numeroSerieSession = $_SESSION["num_serie"];
-                                    $conexion = mysqli_connect("localhost", "root", "", "bd_prestamos");
+                                        include '../../../datosBBDD.php';
+                                        error_reporting(0);
+                                        session_start();
+                                        $numeroSerieSession = $_SESSION["num_serie"];
+                                        $conexion = mysqli_connect($servername, $username, $password, $database);
                                     $consulta = mysqli_query($conexion, "SELECT * FROM materiales WHERE num_serie='$numeroSerieSession'");
                                     $columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
                                 ?>
