@@ -58,10 +58,25 @@
             <h2 class="titulo">MATERIALES</h2>     
         </div>
         <div class="container p-4">
-            <form class="form-inline my-2 my-lg-0 align-middle">
-                <input class="form-control mr-sm-2 border" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn  my-2 my-sm-0 btn-outline-primary btn-primary-np-blue" type="submit">Buscar</button>
-            </form>
+            <div class="d-flex flex-row justify-content-between">
+                <div>
+                    <form class="form-inline my-2 my-lg-0 align-middle">
+                        <input class="form-control mr-sm-2 border" type="search" placeholder="Buscar" aria-label="Search">
+                        <button class="btn  my-2 my-sm-0 btn-outline-primary btn-primary-np-blue" type="submit">Buscar</button>
+                    </form>
+                </div>
+                <div>
+                    <form class="form-inline my-2 my-lg-0 align-middle">
+                    <select class="form-control mr-sm-2" id="exampleFormControlSelect1">
+                        <option value="marca">marca</option>
+                        <option value="modelo">modelo</option>
+                        <option value="estado">estado</option>
+                        <option value="nombre_materiales">tipo</option>
+                    </select>
+                        <button class="btn  my-2 my-sm-0 btn-outline-primary btn-primary-np-blue" type="submit">Filtrar</button>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="limiter">
             <div class="container-table100">
