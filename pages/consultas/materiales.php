@@ -4,8 +4,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="../../css/gestion/css.css">
         <link rel="stylesheet" href="../../css/gestion/estilo.css">
         <link rel="stylesheet" href="../../css/gestion/st.css">
@@ -57,7 +57,27 @@
         <div class="container titulhr">
             <h2 class="titulo">MATERIALES</h2>     
         </div>
-        
+        <div class="container p-4">
+            <div class="d-flex flex-row justify-content-between">
+                <div>
+                    <form class="form-inline my-2 my-lg-0 align-middle">
+                        <input class="form-control mr-sm-2 border" type="search" placeholder="Buscar" aria-label="Search">
+                        <button class="btn  my-2 my-sm-0 btn-outline-primary btn-primary-np-blue" type="submit">Buscar</button>
+                    </form>
+                </div>
+                <div>
+                    <form class="form-inline my-2 my-lg-0 align-middle">
+                    <select class="form-control mr-sm-2" id="exampleFormControlSelect1">
+                        <option value="marca">marca</option>
+                        <option value="modelo">modelo</option>
+                        <option value="estado">estado</option>
+                        <option value="nombre_materiales">tipo</option>
+                    </select>
+                        <button class="btn  my-2 my-sm-0 btn-outline-primary btn-primary-np-blue" type="submit">Filtrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="limiter">
             <div class="container-table100">
                 <div class="wrap-table100">
@@ -70,14 +90,24 @@
                                         <th class="cell100 column2">MARCA</th>
                                         <th class="cell100 column3">MODELO</th>
                                         <th class="cell100 column4">IMAGEN</th>
+                                        <th class="cell100 column5">ESTADO</th>
+                                        <th class="cell100 column6">TIPO</th>
+                                        <th class="cell100 column7">EDITAR</th>
+                                        <th class="cell100 column7">BORRAR</th>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
-    
                         <div class="table100-body js-pscroll">
                             <table>
                                 <tbody>
+                                    <tr>
+                                        <td  colspan="7">
+                                            <div class="d-flex justify-content-center">
+                                                <button class="btn  my-2 my-sm-0 btn-outline-success align-self-center ">añadir material  <i class="far fa-plus-square"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     <?php
                                     include '../../datosBBDD.php';
                                     error_reporting(0);
@@ -90,6 +120,10 @@
                                         echo "<td class='cell100 column2'>" . $columna["marca"] . "</td>";
                                         echo "<td class='cell100 column3'>" . $columna["modelo"] . "</td>";
                                         echo "<td class='cell100 column4'><img src='../../" . $columna["ruta"] . "'></td>";
+                                        echo "<td class='cell100 column5'>" . $columna["estado"] . "</td>";
+                                        echo "<td class='cell100 column6'>" . $columna["nombre_materiales"] . "</td>";
+                                        echo "<td class='cell100 column7'><a href=''><img src='../../img/editar.png'></a></td>";
+                                        echo "<td class='cell100 column7'><a href=''><img src='../../img/delete.png'></a></td>";
                                         echo "</tr>";
                                     }
                                     ?>
