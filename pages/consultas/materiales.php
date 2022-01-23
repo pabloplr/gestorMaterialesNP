@@ -92,6 +92,7 @@
                                         <th class="cell100 column4">IMAGEN</th>
                                         <th class="cell100 column5">ESTADO</th>
                                         <th class="cell100 column6">TIPO</th>
+                                        <th class="cell100 column7">EDITAR</th>
                                         <th class="cell100 column7">BORRAR</th>
                                     </tr>
                                 </thead>
@@ -120,6 +121,7 @@
                                         echo "<td class='cell100 column4'><img src='../../" . $columna["ruta"] . "'></td>";
                                         echo "<td class='cell100 column5'>" . $columna["estado"] . "</td>";
                                         echo "<td class='cell100 column6'>" . $columna["nombre_materiales"] . "</td>";
+                                        echo "<td class='cell100 column7'><a href=''><img src='../../img/editar.png'></a></td>";
                                         echo "<td class='cell100 column7'><a href=''><img src='../../img/delete.png'></a></td>";
                                         echo "</tr>";
                                     }
