@@ -13,7 +13,7 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="../../../principal.php"><img src="../../../img/np.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -68,67 +68,78 @@
                                         include '../../../datosBBDD.php';
                                         error_reporting(0);
                                         session_start();
-                                        $dniSession = $_SESSION["dni"];
+                                        $dniSession = $_COOKIE["dni"];
                                         $conexion = mysqli_connect($servername, $username, $password, $database);
                                     $consulta = mysqli_query($conexion, "SELECT * FROM usuarios WHERE dni='$dniSession'");
                                     $columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
                                 ?>
-                                <input type="text" id="dni" name="dni" class="form-control" placeholder="29567845X" autocomplete="off" readonly value="<?php echo $columna["dni"] ?>">
+                                <script>console.log("PHP: <?php echo $_SESSION["dni"] ?>")</script>
+                                <input type="text" id="dni" name="dni" class="form-control" placeholder="<?php echo $columna["dni"] ?>" autocomplete="off" readonly value="<?php echo $columna["dni"] ?>">
                             </div>
+                            
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nombre:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="nombre_usuarios" name="nombre_usuarios" class="form-control" placeholder="Nacho" autocomplete="off" value="<?php echo $columna["nombre_usuarios"] ?>">
+                                <input type="text" id="nombre_usuarios" name="nombre_usuarios" class="form-control" placeholder="<?php echo $columna["nombre_usuarios"] ?>" autocomplete="off" value="<?php echo $columna["nombre_usuarios"] ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Apellidos:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Sánchez" autocomplete="off" value="<?php echo $columna["apellidos"] ?>">
+                                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="<?php echo $columna["apellidos"] ?>" autocomplete="off" value="<?php echo $columna["apellidos"] ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Curso:</label>
                             <div class="col-sm-10">
-                                <input type="number" id="curso" name="curso" class="form-control" placeholder="1" autocomplete="off" value="<?php echo $columna["curso"] ?>">
+                                <input type="text" id="curso" name="curso" class="form-control" placeholder="<?php echo $columna["curso"] ?>" autocomplete="off" value="<?php echo $columna["curso"] ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Ciclo:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="ciclo" name="ciclo" class="form-control" placeholder="DAW" autocomplete="off" value="<?php echo $columna["ciclo"] ?>">
+                                <input type="text" id="ciclo" name="ciclo" class="form-control" placeholder="<?php echo $columna["ciclo"] ?>" autocomplete="off" value="<?php echo $columna["ciclo"] ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Rol:</label>
                             <div class="col-sm-10">
-                                <select class="custom-select" id="inputGroupSelect04" name="rol">
+                                <select class="custom-select" id="inputGroupSelect04" name="rol" placeholder="<?php echo $columna["rol"] ?>">">
+                                    <option value='usuario'>Usuario</option>";
+                                    <option value='administrador'>Administrador</option>";
+                                    <option value='servicio_tecnico'>Servicio Técnico</option>";
                                     <?php 
-                                        error_reporting(0);
-                                        switch ($columna["rol"]) {
-                                            case usuario:
-                                                echo "<option value='usuario' selected>Usuario</option>";
-                                                echo "<option value='administrador'>Administrador</option>";
-                                                echo "<option value='servicio_tecnico'>Servicio Técnico</option>";
-                                                break;
+                                        // error_reporting(0);
+                                        // switch ($columna["rol"]) {
+                                        //     case usuario:
+                                        //         echo "<option value='usuario' selected>Usuario</option>";
+                                        //         echo "<option value='administrador'>Administrador</option>";
+                                        //         echo "<option value='servicio_tecnico'>Servicio Técnico</option>";
+                                        //         break;
 
-                                            case administrador:
-                                                echo "<option value='usuario'>Usuario</option>";
-                                                echo "<option value='administrador' selected>Administrador</option>";
-                                                echo "<option value='servicio_tecnico'>Servicio Técnico</option>";
-                                                break;
+                                        //     case administrador:
+                                        //         echo "<option value='usuario'>Usuario</option>";
+                                        //         echo "<option value='administrador' selected>Administrador</option>";
+                                        //         echo "<option value='servicio_tecnico'>Servicio Técnico</option>";
+                                        //         break;
 
-                                            case servicio_tecnico:
-                                                echo "<option value='usuario'>Usuario</option>";
-                                                echo "<option value='administrador'>Administrador</option>";
-                                                echo "<option value='servicio_tecnico' selected>Servicio Técnico</option>";
-                                                break;
-                                        }
-                                        ?>
+                                        //     case servicio_tecnico:
+                                        //         echo "<option value='usuario'>Usuario</option>";
+                                        //         echo "<option value='administrador'>Administrador</option>";
+                                        //         echo "<option value='servicio_tecnico' selected>Servicio Técnico</option>";
+                                        //         break;
+                                        // }
+                                    ?>
                                 </select>
                             </div>
-                        </div>
+                        </div>   
+                        <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Moroso:</label>
+                            <div class="col-sm-1">
+                            <input type="checkbox" name="moroso" class="form-control" id="moroso">
+                            </div>
+                        </div>       
                         <div class="form-group row">
                             <div class="col-sm-12 text-center mt-5">
                                 <button type="submit" class="btn btn-primary" name="actualizar">Actualizar</button>
@@ -144,8 +155,11 @@
                             $curso = $_POST['curso'];
                             $rol = $_POST['rol'];
                             $ciclo = $_POST['ciclo'];
+                            if ($_POST['moroso']) {
+                                $moroso= 1;
+                            }
 
-                            $update = "UPDATE usuarios SET nombre_usuarios = '$nombre', apellidos = '$apellidos', curso = '$curso', rol = '$rol', ciclo = '$ciclo' WHERE dni = '$dniSession'";
+                            $update = "UPDATE usuarios SET nombre_usuarios = '$nombre', apellidos = '$apellidos', curso = '$curso', rol = '$rol', ciclo = '$ciclo', moroso = '$moroso' WHERE dni = '$dniSession'";
 
                             if (mysqli_query($conexion, $update)) {
                                 echo "<script>alert('El usuario ha sido actualizado.'); location.href='actualizar-usuarios.php';</script>";

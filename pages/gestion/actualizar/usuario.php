@@ -48,7 +48,8 @@
 
                                 if ($numcolumnas != 0){
                                     session_start();
-                                    $_SESSION["dni"] = $dni;
+                                    setcookie("dni",$dni,time()+1000);
+                                    // $_COOKIE["dni"] = $dni;
                                     echo "<script>location.href='actualizar-usuarios.php';</script>";
                                 } else {
                                     echo "<div class='alert alert-danger' role='alert' style='margin: auto;margin-top: 2rem;text-align: center;'>El usuario introducido no está registrado.</div>";
