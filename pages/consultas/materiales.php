@@ -111,21 +111,45 @@
                                     <?php
                                     include '../../datosBBDD.php';
                                     error_reporting(0);
-                                    $conexionBD = mysqli_connect($servername, $username, $password, $database);
-                                    $consulta = mysqli_query($conexionBD, "SELECT * FROM materiales");
-
-                                    while ($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
+                                    // $conexionBD = mysqli_connect($servername, $username, $password, $database);
+                                    // $consulta = mysqli_query($conexionBD, "SELECT * FROM materiales");
+                                    $columna = obtenerTodos();
+                                    for ($i=0; $i <count($columna) ; $i++){
                                         echo "<tr>";
-                                        echo "<td class='cell100 column1'>" . $columna["num_serie"] . "</td>";
-                                        echo "<td class='cell100 column2'>" . $columna["marca"] . "</td>";
-                                        echo "<td class='cell100 column3'>" . $columna["modelo"] . "</td>";
-                                        echo "<td class='cell100 column4'><img src='../../" . $columna["ruta"] . "'></td>";
-                                        echo "<td class='cell100 column5'>" . $columna["estado"] . "</td>";
-                                        echo "<td class='cell100 column6'>" . $columna["nombre_materiales"] . "</td>";
+                                        echo "<td class='cell100 column1'>" . $columna[$i]["num_serie"] . "</td>";
+                                        echo "<td class='cell100 column2'>" . $columna[$i]["marca"] . "</td>";
+                                        echo "<td class='cell100 column3'>" . $columna[$i]["modelo"] . "</td>";
+                                        echo "<td class='cell100 column4'><img src='../../" . $columna[$i]["ruta"] . "'></td>";
+                                        echo "<td class='cell100 column5'>" . $columna[$i]["estado"] . "</td>";
+                                        echo "<td class='cell100 column6'>" . $columna[$i]["nombre_materiales"] . "</td>";
                                         echo "<td class='cell100 column7'><a href=''><img src='../../img/editar.png'></a></td>";
-                                        echo "<td class='cell100 column7'><a href=''><img src='../../img/delete.png'></a></td>";
+                                        echo "<td class='cell100 column7'><a href='deleteMaterial.php?varId=".$columna[$i]["num_serie"]."'><img src='../../img/delete.png'></a></td>";
                                         echo "</tr>";
                                     }
+                                    // while ($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
+                                    //     echo "<tr>";
+                                    //     echo "<td class='cell100 column1'>" . $columna["num_serie"] . "</td>";
+                                    //     echo "<td class='cell100 column2'>" . $columna["marca"] . "</td>";
+                                    //     echo "<td class='cell100 column3'>" . $columna["modelo"] . "</td>";
+                                    //     echo "<td class='cell100 column4'><img src='../../" . $columna["ruta"] . "'></td>";
+                                    //     echo "<td class='cell100 column5'>" . $columna["estado"] . "</td>";
+                                    //     echo "<td class='cell100 column6'>" . $columna["nombre_materiales"] . "</td>";
+                                    //     echo "<td class='cell100 column7'><a href=''><img src='../../img/editar.png'></a></td>";
+                                    //     echo "<td class='cell100 column7'><a href='delete.php?varId=".$datos[$i]["id"]."'><img src='../../img/delete.png'></a></td>";
+                                    //     echo "</tr>";
+                                    // }
+
+                                    function obtenerTodos(){
+                                        include '../../datosBBDD.php';
+                                        $datos =  [];
+                                        $conexionBD = mysqli_connect($servername, $username, $password, $database);
+                                        $consulta = mysqli_query($conexionBD, "SELECT * FROM materiales");
+                                        while($dato = mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
+                                            $datos[] = $dato;
+                                        }
+                                        return $datos;
+                                    }
+
                                     ?>
                                 </tbody>
                             </table>
