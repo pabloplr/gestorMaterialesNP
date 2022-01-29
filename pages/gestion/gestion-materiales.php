@@ -13,17 +13,18 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        
+        <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="../principal.php"><img src="../../img/np.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        aria-controls="navbarSuppordtedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto ">
-                        <li class="nav-item active dropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item ml-2 active dropdown">
                             <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">Gestión</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="gestion-materiales.php">Materiales</a>
