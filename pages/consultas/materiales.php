@@ -119,7 +119,11 @@
                                         echo "<td class='cell100 column1'>" . $columna[$i]["num_serie"] . "</td>";
                                         echo "<td class='cell100 column2'>" . $columna[$i]["marca"] . "</td>";
                                         echo "<td class='cell100 column3'>" . $columna[$i]["modelo"] . "</td>";
-                                        echo "<td class='cell100 column4'><img src='../../" . $columna[$i]["ruta"] . "'></td>";
+                                        if($columna[$i]["ruta"] == ""){
+                                            echo "<td class='cell100 column4'><img src='../../img/img_defecto.png". "'></td>";
+                                        }else{
+                                            echo "<td class='cell100 column4'><img src='../../" . $columna[$i]["ruta"] . "'></td>";
+                                        }
                                         echo "<td class='cell100 column5'>" . $columna[$i]["estado"] . "</td>";
                                         echo "<td class='cell100 column6'>" . $columna[$i]["nombre_materiales"] . "</td>";
                                         echo "<td class='cell100 column7'><a href=''><img src='../../img/editar.png'></a></td>";
