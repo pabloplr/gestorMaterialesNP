@@ -72,6 +72,8 @@
                                         <th class="cell100 column4">CURSO</th>
                                         <th class="cell100 column5">CICLO</th>
                                         <th class="cell100 column6">NUM. OBJETOS</th>
+                                        <th class="cell100 column7">EDITAR</th>
+                                        <th class="cell100 column7">BORRAR</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -94,6 +96,8 @@
                                         echo "<td class='cell100 column4'>" . $columna["curso"] . "</td>";
                                         echo "<td class='cell100 column5'>" . $columna["ciclo"] . "</td>";
                                         echo "<td class='cell100 column6'>" . $columna["num_objetos"] . "</td>";
+                                        echo "<td class='cell100 column7'><a href=''><img src='../../img/editar.png'></a></td>";
+                                        echo "<td class='cell100 column7'><a href='deleteMaterial.php?varId=".$columna[$i]["dni"]."'><img src='../../img/delete.png'></a></td>";
                                         echo "</tr>";
                                     }
                                     ?>
