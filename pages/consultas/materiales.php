@@ -127,7 +127,7 @@
                                         }
                                         echo "<td class='cell100 column5'>" . $columna[$i]["estado"] . "</td>";
                                         echo "<td class='cell100 column6'>" . $columna[$i]["nombre_materiales"] . "</td>";
-                                        echo "<td class='cell100 column7'><a href=''><img src='../../img/editar.png'></a></td>";
+                                        echo "<td class='cell100 column7'><a href='../gestion/actualizar/actualizar-materiales.php?varId2=".$columna[$i]["num_serie"]."'><img src='../../img/editar.png'></a></td>";
                                         echo "<td class='cell100 column7'><a href='deleteMaterial.php?varId=".$columna[$i]["num_serie"]."'><img src='../../img/delete.png'></a></td>";
                                         echo "</tr>";
                                     }
