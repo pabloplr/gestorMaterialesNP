@@ -136,6 +136,7 @@
                         </div>   
                         <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Moroso:</label>
+                        <!-- Aqui debemos cernionarnos desde la base de datos si es Moroso o no para que no ponga por defecto NO -->
                             <div class="col-sm-1">
                             <input type="checkbox" name="moroso" class="form-control" id="moroso">
                             </div>
