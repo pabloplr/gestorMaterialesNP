@@ -13,7 +13,7 @@
 
     <body>
         <?php session_start(); ?>
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="../principal.php"><img src="../../img/np.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
