@@ -107,6 +107,7 @@
                                                 <button class="btn  my-2 my-sm-0 btn-outline-success align-self-center ">añadir material  <i class="far fa-plus-square"></i></button>
                                             </div>
                                         </td>
+                                        <!-- <img src="../../img/img_defecto.png" alt=""> -->
                                     </tr>
                                     <?php
                                     include '../../datosBBDD.php';
@@ -119,7 +120,7 @@
                                         echo "<td class='cell100 column1'>" . $columna[$i]["num_serie"] . "</td>";
                                         echo "<td class='cell100 column2'>" . $columna[$i]["marca"] . "</td>";
                                         echo "<td class='cell100 column3'>" . $columna[$i]["modelo"] . "</td>";
-                                        if($columna[$i]["ruta"] == ""){
+                                        if($columna[$i]["ruta"] == "" || $columna[$i]["ruta"] == "img/materiales/"){
                                             echo "<td class='cell100 column4'><img src='../../img/img_defecto.png". "'></td>";
                                         }else{
                                             echo "<td class='cell100 column4'><img src='../../" . $columna[$i]["ruta"] . "'></td>";
