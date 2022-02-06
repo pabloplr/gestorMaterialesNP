@@ -59,7 +59,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                    <form class="jumbotron" method="POST" action="actualizar-materiales.php">
+                    <form class="jumbotron" method="POST" action="material-actualizado.php">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Número de Serie:</label>
                             <div class="col-sm-10">
@@ -67,16 +67,23 @@
                                         include '../../../datosBBDD.php';
                                         error_reporting(0);
                                         session_start();
-                                        if(isset($_POST['varId2'])){
-                                            $numeroSerieSession = $_POST['varId2'];
+                                        if(isset($_GET['varId2'])){
+                                            $numeroSerieSession = $_GET['varId2'];
                                         }else{
                                             $numeroSerieSession = $_SESSION["num_serie"];
-                                        }
-                                        $conexion = mysqli_connect($servername, $username, $password, $database);
-                                    $consulta = mysqli_query($conexion, "SELECT * FROM materiales WHERE num_serie='$numeroSerieSession'");
-                                    $columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
+                                        }  
+
+                                    if($conexion = mysqli_connect($servername, $username, $password, $database)){
+                                        $consulta = mysqli_query($conexion, "SELECT * FROM materiales WHERE num_serie='$numeroSerieSession'");
+                                        $columna = mysqli_fetch_assoc($consulta);
+                                        $_SESSION['estado'] = $columna['estado'];
+                                        $_SESSION['material'] = $columna['nombre_materiales'];
+                                        echo '<input type="text" id="nserie" name="nserie" class="form-control" placeholder="ER45DJ" autocomplete="off" readonly value="' .  $columna["num_serie"] . '">';
+                                    }else{
+                                        echo "ERROR ";
+                                    }
+
                                 ?>
-                                <input type="text" id="nserie" name="nserie" class="form-control" placeholder="ER45DJ" autocomplete="off" readonly value="<?php echo $columna["num_serie"] ?>">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -85,8 +92,8 @@
                                 <select class="custom-select" id="inputGroupSelect04" name="nombre_material">
                                     <?php 
                                         error_reporting(0);
-                                        switch ($columna["nombre_materiales"]){
-                                            case camara:
+                                        switch ($_SESSION['material']){
+                                            case 'camara':
                                                 echo "<option value='camara' selected>Cámara</option>";
                                                 echo "<option value='auricular'>Auriculares</option>";
                                                 echo "<option value='cable'>Cables</option>";
@@ -94,7 +101,7 @@
                                                 echo "<option value='tripode'>Trípode</option>";
                                                 break;
                                             
-                                            case auricular:
+                                            case 'auricular':
                                                 echo "<option value='camara'>Cámara</option>";
                                                 echo "<option value='auricular' selected>Auriculares</option>";
                                                 echo "<option value='cable'>Cables</option>";
@@ -102,7 +109,7 @@
                                                 echo "<option value='tripode'>Trípode</option>";
                                                 break;
                                             
-                                            case cable:
+                                            case 'cable':
                                                 echo "<option value='camara'>Cámara</option>";
                                                 echo "<option value='auricular'>Auriculares</option>";
                                                 echo "<option value='cable' selected>Cables</option>";
@@ -110,7 +117,7 @@
                                                 echo "<option value='tripode'>Trípode</option>";
                                                 break;
                                             
-                                            case microfono:
+                                            case 'microfono':
                                                 echo "<option value='camara'>Cámara</option>";
                                                 echo "<option value='auricular'>Auriculares</option>";
                                                 echo "<option value='cable'>Cables</option>";
@@ -118,7 +125,7 @@
                                                 echo "<option value='tripode'>Trípode</option>";
                                                 break;
                                             
-                                            case tripode:
+                                            case 'tripode':
                                                 echo "<option value='camara'>Cámara</option>";
                                                 echo "<option value='auricular'>Auriculares</option>";
                                                 echo "<option value='cable'>Cables</option>";
@@ -149,20 +156,20 @@
                                 <select class="custom-select" id="inputGroupSelect04" name="estado">
                                 <?php 
                                 error_reporting(0);
-                                switch ($columna["estado"]) {
-                                    case stock:
+                                switch ($_SESSION['estado']) {
+                                    case 'stock':
                                         echo "<option value='stock' selected>Stock</option>";
                                         echo "<option value='prestamo'>Prestamo</option>";
                                         echo "<option value='reparacion'>Reparación</option>";
                                         break;
 
-                                    case prestamo:
+                                    case 'prestamo':
                                         echo "<option value='stock'>Stock</option>";
                                         echo "<option value='prestamo' selected>Prestamo</option>";
                                         echo "<option value='reparacion'>Reparación</option>";
                                         break;
 
-                                    case reparacion:
+                                    case 'reparacion':
                                         echo "<option value='stock'>Stock</option>";
                                         echo "<option value='prestamo'>Prestamo</option>";
                                         echo "<option value='reparacion' selected>Reparación</option>";
@@ -189,6 +196,7 @@
                     <?php
                         error_reporting(0);
                         if (isset($_POST["submit"])){
+                            echo $_POST['nombre_material'];
                             $nombre_material = strtolower($_POST['nombre_material']);
                             $marca = $_POST['marca'];
                             $modelo = $_POST['modelo'];
