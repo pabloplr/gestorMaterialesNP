@@ -21,7 +21,7 @@ include '../../../datosBBDD.php';
 
     if (mysqli_query($conexion, $update)) {
         echo "<script>alert('El material ha sido actualizado.')</script>";
-        header('Location: actualizar-materiales.php?varId2=' .  $_POST['nserie']);
+        header('Location: ./../../consultas/materiales.php');
     } else {
         echo "<div class='alert alert-danger' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>El material no se actualizó por un error inesperado.</div>";
     }
