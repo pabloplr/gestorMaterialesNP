@@ -77,12 +77,12 @@
                     </a>
                  </div>
 
-                <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" style="width: 18rem;">
+                <!-- <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" style="width: 18rem;">
                     <img class="card-img-top img1" id="operaciones" src="../../img/delete.png" alt="Card image cap">
                     <div class="card-body">
                         <button class="bubbly-button card-title text-center" data-toggle="modal" data-target="#eliminar">Eliminar</button>
                     </div>
-                </div>
+                </div> -->
             </div>
             
             <?php     
