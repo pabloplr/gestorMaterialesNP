@@ -70,7 +70,7 @@
                                         if(isset($_GET['varId2'])){
                                             $numeroSerieSession = $_GET['varId2'];
                                         }else{
-                                            $numeroSerieSession = $_SESSION["num_serie"];
+                                            $numeroSerieSession = $_POST["num_serie"];
                                         }  
 
                                     if($conexion = mysqli_connect($servername, $username, $password, $database)){
@@ -192,26 +192,6 @@
                             </div>
                         </div>
                     </form>
-                    
-                    <?php
-                        error_reporting(0);
-                        if (isset($_POST["submit"])){
-                            echo $_POST['nombre_material'];
-                            $nombre_material = strtolower($_POST['nombre_material']);
-                            $marca = $_POST['marca'];
-                            $modelo = $_POST['modelo'];
-                            $estado = strtolower($_POST['estado']);
-                            $observaciones = $_POST['observaciones'];
-                            
-                            $update = "UPDATE materiales SET nombre_materiales = '$nombre_material', marca = '$marca', modelo = '$modelo', estado = '$estado', observaciones = '$observaciones' WHERE num_serie = '$numeroSerieSession'";
-
-                            if (mysqli_query($conexion, $update)) {
-                                echo "<script>alert('El material ha sido actualizado.'); location.href='actualizar-materiales.php';</script>";
-                            } else {
-                                echo "<div class='alert alert-danger' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>El material no se actualizó por un error inesperado.</div>";
-                            }
-                        }
-                    ?>
                 </div>
             </div>
         </div>

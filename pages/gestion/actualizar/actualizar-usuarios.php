@@ -60,7 +60,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                    <form class="jumbotron" method="POST" action="actualizar-usuarios.php">
+                    <form class="jumbotron" method="POST" action="usuario-actualizado.php">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">DNI:</label>
                             <div class="col-sm-10">
@@ -68,10 +68,14 @@
                                         include '../../../datosBBDD.php';
                                         error_reporting(0);
                                         session_start();
-                                        $dniSession = $_SESSION["dni"];
+                                        if(isset($_GET['varId2'])){
+                                            $dniSession = $_GET['varId2'];
+                                        }else{
+                                            $dniSession = $_POST["dni"];
+                                        }  
                                         $conexion = mysqli_connect($servername, $username, $password, $database);
-                                    $consulta = mysqli_query($conexion, "SELECT * FROM usuarios WHERE dni='$dniSession'");
-                                    $columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
+                                        $consulta = mysqli_query($conexion, "SELECT * FROM usuarios WHERE dni='$dniSession'");
+                                        $columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
                                 ?>
                                 <input type="text" id="dni" name="dni" class="form-control" placeholder="29567845X" autocomplete="off" readonly value="<?php echo $columna["dni"] ?>">
                             </div>
@@ -106,20 +110,23 @@
                                 <select class="custom-select" id="inputGroupSelect04" name="rol">
                                     <?php 
                                         error_reporting(0);
+                                        include '../../../datosBBDD.php';
+                                        $consulta = mysqli_query($conexion, "SELECT * FROM usuarios WHERE dni='$dniSession'");
+                                        $columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
                                         switch ($columna["rol"]) {
-                                            case usuario:
+                                            case 'usuario':
                                                 echo "<option value='usuario' selected>Usuario</option>";
                                                 echo "<option value='administrador'>Administrador</option>";
                                                 echo "<option value='servicio_tecnico'>Servicio Técnico</option>";
                                                 break;
 
-                                            case administrador:
+                                            case 'administrador':
                                                 echo "<option value='usuario'>Usuario</option>";
                                                 echo "<option value='administrador' selected>Administrador</option>";
                                                 echo "<option value='servicio_tecnico'>Servicio Técnico</option>";
                                                 break;
 
-                                            case servicio_tecnico:
+                                            case 'servicio_tecnico':
                                                 echo "<option value='usuario'>Usuario</option>";
                                                 echo "<option value='administrador'>Administrador</option>";
                                                 echo "<option value='servicio_tecnico' selected>Servicio Técnico</option>";
@@ -135,25 +142,6 @@
                             </div>
                         </div>
                     </form>
-                    
-                    <?php
-                        error_reporting(0);
-                        if (isset($_POST["actualizar"])){
-                            $nombre = $_POST['nombre_usuarios'];
-                            $apellidos = $_POST['apellidos'];
-                            $curso = $_POST['curso'];
-                            $rol = $_POST['rol'];
-                            $ciclo = $_POST['ciclo'];
-
-                            $update = "UPDATE usuarios SET nombre_usuarios = '$nombre', apellidos = '$apellidos', curso = '$curso', rol = '$rol', ciclo = '$ciclo' WHERE dni = '$dniSession'";
-
-                            if (mysqli_query($conexion, $update)) {
-                                echo "<script>alert('El usuario ha sido actualizado.'); location.href='actualizar-usuarios.php';</script>";
-                            } else {
-                                echo "<div class='alert alert-danger' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>El usuario no se actualizó por un error inesperado.</div>";
-                            }
-                        }
-                    ?>
                 </div>
             </div>
         </div>
