@@ -64,7 +64,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Número de Serie:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="num_serie" name="num_serie" class="form-control" placeholder="ER45DJ" autocomplete="off">
+                                <input type="text" id="num_serie" name="num_serie" class="form-control" placeholder="nº de serie" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -82,13 +82,13 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Marca:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="marca" name="marca" class="form-control" placeholder="Nikon" autocomplete="off">
+                                <input type="text" id="marca" name="marca" class="form-control" placeholder="nombre marca" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Modelo:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="modelo" name="modelo" class="form-control" placeholder="D3500" autocomplete="off">
+                                <input type="text" id="modelo" name="modelo" class="form-control" placeholder="nombre modelo" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group row">

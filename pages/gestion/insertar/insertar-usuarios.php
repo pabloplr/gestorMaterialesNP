@@ -64,38 +64,38 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">DNI:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="dni" name="dni" class="form-control" placeholder="29567845X" autocomplete="off">
+                                <input type="text" id="dni" name="dni" class="form-control" placeholder="DNI" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nombre:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="nombre_usuarios" name="nombre_usuarios" class="form-control" placeholder="Nacho" autocomplete="off">
+                                <input type="text" id="nombre_usuarios" name="nombre_usuarios" class="form-control" placeholder="nombre" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Apellidos:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Sánchez" autocomplete="off">
+                                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="apellidos" autocomplete="off">
                             </div>
                         </div>
                         <!-- TODO correo -->
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Correo:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="" name="" class="form-control" placeholder="dela@campuscamara.es" autocomplete="off">
+                                <input type="text" id="" name="" class="form-control" placeholder="correo@campuscamara.es" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Curso:</label>
                             <div class="col-sm-10">
-                                <input type="number" id="curso" name="curso" class="form-control" placeholder="1" autocomplete="off">
+                                <input type="number" id="curso" name="curso" class="form-control" placeholder="curso (1º, 2º, ...)" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Ciclo:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="ciclo" name="ciclo" class="form-control" placeholder="DAW" autocomplete="off">
+                                <input type="text" id="ciclo" name="ciclo" class="form-control" placeholder="ciclo" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group row">

@@ -59,7 +59,7 @@
         
         <div class="container tarjetas mt-5">
             <div class="row">
-                <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" style="width: 18rem;">
+                <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" style="width: 18rem;">
                     <a href="insertar/insertar-usuarios.php" id="enlace">
                         <img class="card-img-top img1" id="operaciones" src="../../img/insert.png" alt="Card image cap">
                         <div class="card-body"> 
@@ -68,7 +68,7 @@
                     </a>
                 </div>
 
-                <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" style="width: 18rem;">
+                <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" style="width: 18rem;">
                     <a href="actualizar/usuario.php" id="enlace">
                         <img class="card-img-top img1" id="operaciones" src="../../img/update.png" alt="Card image cap">
                         <div class="card-body">
