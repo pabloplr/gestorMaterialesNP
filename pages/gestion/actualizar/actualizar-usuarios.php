@@ -15,7 +15,7 @@
     <body>
         <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="../../../principal.php"><img src="../../../img/np.png"></a>
+                <a class="navbar-brand" href="../../principal.php"><img src="../../../img/np.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -70,26 +70,24 @@
                                         session_start();
                                         if(isset($_GET['varId2'])){
                                             $dniSession = $_GET['varId2'];
-                                        }else{
-                                            $dniSession = $_POST["dni"];
                                         }  
                                         $conexion = mysqli_connect($servername, $username, $password, $database);
                                         $consulta = mysqli_query($conexion, "SELECT * FROM usuarios WHERE dni='$dniSession'");
                                         $columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
                                 ?>
-                                <input type="text" id="dni" name="dni" class="form-control" placeholder="29567845X" autocomplete="off" readonly value="<?php echo $columna["dni"] ?>">
+                                <input type="text" id="dni" name="dni" class="form-control" placeholder="" autocomplete="off" readonly value="<?php echo $columna["dni"] ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nombre:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="nombre_usuarios" name="nombre_usuarios" class="form-control" placeholder="Nacho" autocomplete="off" value="<?php echo $columna["nombre_usuarios"] ?>">
+                                <input type="text" id="nombre_usuarios" name="nombre_usuarios" class="form-control" placeholder="" autocomplete="off" value="<?php echo $columna["nombre_usuarios"] ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Apellidos:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Sánchez" autocomplete="off" value="<?php echo $columna["apellidos"] ?>">
+                                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="" autocomplete="off" value="<?php echo $columna["apellidos"] ?>">
                             </div>
                         </div>
                         <div class="form-group row">

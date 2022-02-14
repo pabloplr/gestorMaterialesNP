@@ -25,7 +25,6 @@
                     <div class="wrap-login100">
                         <span class="login100-form-logo"><img src="../../img/np.png" width="120px" opacity></span>
                         <span class="login100-form-title p-b-34 p-t-27">Nuevas Profesiones</span>
-
                         <div class="wrap-input100 validate-input" data-validate = "Enter serial number">
                             <input class="input100" type="text" name="dni" placeholder="DNI" id="dni" autocomplete="off">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
@@ -49,7 +48,8 @@
                                 if ($numcolumnas != 0){
                                     session_start();
                                     $_SESSION["dni"] = $dni;
-                                    echo "<script>location.href='devolucion.php';</script>";
+                                    // echo "<script>location.href='devolucion.php';</script>";
+                                    header('Location: devolucion.php');
                                 } else {
                                     echo "<div class='alert alert-danger' role='alert' style='margin: auto;margin-top: 2rem;text-align: center;'>El usuario introducido no tiene asignado ningún prestamo.</div>";
                                 }

@@ -66,10 +66,11 @@
                             <table>
                                 <thead>
                                     <tr class="row100 head">
-                                        <th class="cell100 column1">NUMº SERIE</th>
+                                        <th class="cell100 column1">Nº Serie</th>
                                         <th class="cell100 column2">DNI</th>
-                                        <th class="cell100 column3">FECHA PRESTAMO</th>
-                                        <th class="cell100 column4">FECHA MÁXIMA</th>
+                                        <th class="cell100 column3">Fecha préstamo</th>
+                                        <th class="cell100 column3">Fecha devolución</th>
+                                        <th class="cell100 column4">Fecha máxima</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -89,6 +90,7 @@
                                         echo "<td class='cell100 column1'>" . $columna["num_serie"] . "</td>";
                                         echo "<td class='cell100 column2'>" . $columna["dni"] . "</td>";
                                         echo "<td class='cell100 column3'>" . $columna["fecha_prestamo"] . "</td>";
+                                        echo "<td class='cell100 column3'>" . $columna["fecha_devolucion"] . "</td>";
                                         echo "<td class='cell100 column4'>" . $columna["fecha_maxima"] . "</td>";
                                         echo "</tr>";
                                     }

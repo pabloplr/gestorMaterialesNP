@@ -20,13 +20,13 @@
 </head>
 
 <body>
-    <form class="login100-form validate-form" action="actualizar-materiales.php" method="POST">
+    <!-- <form class="login100-form validate-form" action="actualizar-materiales.php" method="POST"> -->
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
                     <span class="login100-form-logo"><img src="../../../img/np.png" width="120px" opacity></span>
                     <span class="login100-form-title p-b-34 p-t-27">Nuevas Profesiones</span>
-                    <form action="actualizar-materiales.php" method="POST">
+                    <form action="./material.php" method="POST">
                         <div class="wrap-input100 validate-input" data-validate="Enter serial number">
                             <input class="input100" type="text" name="num_serie" placeholder="Número de serie" id="num_serie" autocomplete="off">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
@@ -34,13 +34,39 @@
 
                         <div class="container-login100-form-btn p-t-10">
                             <!-- <button class="login100-form-btn" name="continuar">Continuar</button> -->
-                            <input type="submit" class="login100-form-btn" value="Continuar">
+                            <input type="submit" class="login100-form-btn" name="continuar" value="Continuar">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </form>
+    <!-- </form> -->
+
+    <?php
+                               include '../../../datosBBDD.php';
+                               error_reporting(0);
+                               session_start();
+                               if (isset($_POST["continuar"])){
+                                $conn = mysqli_connect($servername, $username, $password, $database);
+                                $num_serie = $_POST["num_serie"];
+                                if ($resultado = mysqli_query($conn, "SELECT num_serie FROM materiales WHERE num_serie = '$num_serie'")) {
+                                    $numcolumnas = mysqli_num_rows($resultado);
+                                }
+
+                                if ($numcolumnas != 0){
+
+                                    
+                                    // $_SESSION["num_serie"] = $num_serie;
+                                    // echo $_SESSION["num_serie"];
+                                    header('Location: actualizar-materiales.php?varId2='.$num_serie);
+                                } else {
+                                    echo "<div class='alert alert-danger' role='alert' style='margin: auto;margin-top: 2rem;text-align: center;'>El Nº de serie introducido no existe.</div>";
+                                }
+
+                                mysqli_close($conn);
+                            }
+                        ?>
+
 
     <script src="../../../vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="../../../vendor/animsition/js/animsition.min.js"></script>

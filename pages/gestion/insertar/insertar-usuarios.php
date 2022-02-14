@@ -128,7 +128,6 @@
 
                             //Cogemos los datos de los inputs mediante el método POST
                                 $dni = $_POST['dni'];
-
                                 if ($resultado = mysqli_query($conn, "SELECT dni FROM usuarios WHERE dni = '$dni'")) {
                                     $numcolumnas = mysqli_num_rows($resultado);
                                 }
