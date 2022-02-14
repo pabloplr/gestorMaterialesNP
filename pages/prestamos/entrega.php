@@ -134,13 +134,12 @@
 
                                     $value = $numSerie . "-" . date("Y/m/d") . "-" . date("Y/m/d", strtotime(date("Y/m/d") . "+ 15 day"));
 
-                                    // echo "<option value='$value'> $numSerie - $marca, $modelo</option>";
                                     echo "<tr>
                                                     <td>$numSerie</td>
                                                     <td>$tipo</td>
                                                     <td>$modelo</td>
                                                     <td>$marca</td>
-                                                    <td><a class='btn btn-outline-primary m-auto' href='prestarMaterial.php?varId=" . $numSerie . "'></a></td>
+                                                    <td><a class='btn btn-outline-primary m-auto' href='prestarMaterial.php?varId=" . $numSerie ."&dni=". $_GET['dni']. "'>Prestar</a></td>
                                                 </tr>";
                                 }
                                 ?>
