@@ -14,7 +14,7 @@
     <body>
         <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="../../../principal.php"><img src="../../../img/np.png"></a>
+                <a class="navbar-brand" href="../../principal.php"><img src="../../../img/np.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -69,16 +69,15 @@
                                         session_start();
                                         if(isset($_GET['varId2'])){
                                             $numeroSerieSession = $_GET['varId2'];
-                                        }else{
-                                            $numeroSerieSession = $_POST["num_serie"];
-                                        }  
-
+                                        } 
+                                        // echo "HOLA";
+                                        // echo $numeroSerieSession;
                                     if($conexion = mysqli_connect($servername, $username, $password, $database)){
                                         $consulta = mysqli_query($conexion, "SELECT * FROM materiales WHERE num_serie='$numeroSerieSession'");
                                         $columna = mysqli_fetch_assoc($consulta);
                                         $_SESSION['estado'] = $columna['estado'];
                                         $_SESSION['material'] = $columna['nombre_materiales'];
-                                        echo '<input type="text" id="nserie" name="nserie" class="form-control" placeholder="ER45DJ" autocomplete="off" readonly value="' .  $columna["num_serie"] . '">';
+                                        echo '<input type="text" id="nserie" name="nserie" class="form-control" autocomplete="off" readonly value="' .  $columna["num_serie"] . '">';
                                     }else{
                                         echo "ERROR ";
                                     }

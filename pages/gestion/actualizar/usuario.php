@@ -20,13 +20,13 @@
 </head>
 
 <body>
-    <form class="login100-form validate-form" action="actualizar-usuarios.php" method="POST">
+    <!-- <form class="login100-form validate-form" action="actualizar-usuarios.php" method="POST"> -->
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
                     <span class="login100-form-logo"><img src="../../../img/np.png" width="120px" opacity></span>
                     <span class="login100-form-title p-b-34 p-t-27">Nuevas Profesiones</span>
-                    <form action="actualizar-usuarios.php">
+                    <form action="./usuario.php" method="POST">
                         <div class="wrap-input100 validate-input" data-validate="Enter serial number">
                             <input class="input100" type="text" name="dni" placeholder="DNI" id="dni" autocomplete="off">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
@@ -34,14 +34,40 @@
 
                         <div class="container-login100-form-btn p-t-10">
                             <!-- <button class="login100-form-btn" name="continuar">Continuar</button> -->
-                            <input class="login100-form-btn" type="submit" value="Continuar">
+                            <input class="login100-form-btn" type="submit" name="continuar" value="Continuar">
                         </div>
                     </form>
 
                 </div>
             </div>
         </div>
-    </form>
+    <!-- </form> -->
+
+
+    <?php
+                               include '../../../datosBBDD.php';
+                               error_reporting(0);
+                               session_start();
+                               if (isset($_POST["continuar"])){
+                                $conn = mysqli_connect($servername, $username, $password, $database);
+                                $dni = $_POST["dni"];
+                                if ($resultado = mysqli_query($conn, "SELECT dni FROM usuarios WHERE dni = '$dni'")) {
+                                    $numcolumnas = mysqli_num_rows($resultado);
+                                }
+
+                                if ($numcolumnas != 0){
+                                    header('Location: actualizar-usuarios.php?varId2='.$dni);
+                                } else {
+                                    echo "<div class='alert alert-danger' role='alert' style='margin: auto;margin-top: 2rem;text-align: center;'>El DNI introducido no existe.</div>";
+                                }
+
+                                mysqli_close($conn);
+                            }
+                        ?>
+
+
+
+
 
     <script src="../../../vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="../../../vendor/animsition/js/animsition.min.js"></script>

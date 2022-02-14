@@ -63,16 +63,17 @@
                     <table class="table text-center">
                         <thead>
                             <tr>
-                                <th scope="col">MATERIAL</th>
-                                <th scope="col">NUM. SERIE</th>
-                                <th scope="col">MARCA</th>
-                                <th scope="col">MODELO</th>
-                                <th scope="col">SELECCIONAR</th>
+                                <th scope="col">Material</th>
+                                <th scope="col">Nº Serie</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Modelo</th>
+                                <th scope="col">Devolver</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <?php
+                                      
                                         include '../../datosBBDD.php';
                                         error_reporting(0);
                                         
@@ -82,7 +83,8 @@
                                         $dni = $_SESSION["dni"];
                                         
                                         $conexionBD = mysqli_connect($servername, $username, $password, $database);
-                                    $SQL = "SELECT fecha_prestamo, num_serie, fecha_maxima FROM prestamos WHERE dni = '$dni' AND fecha_devolucion IS NULL";
+                                    // $SQL = "SELECT * FROM prestamos WHERE dni = '$dni' AND fecha_devolucion IS NULL";
+                                    $SQL = "SELECT * FROM prestamos WHERE dni = '$dni' AND fecha_devolucion = '0000-00-00';";
                                     $consulta = mysqli_query($conexionBD, $SQL);
 
                                     while ($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
@@ -92,7 +94,7 @@
                                         $numSerie = $columna["num_serie"];
                                         $fechaMaxima = $columna["fecha_maxima"];
 
-                                        $SQL2 = "SELECT marca, modelo, nombre_materiales FROM materiales WHERE num_serie = '$numSerie'";
+                                        $SQL2 = "SELECT marca, modelo, nombre_materiales FROM materiales WHERE num_serie = '$numSerie';";
                                         $consulta2 = mysqli_query($conexionBD, $SQL2);
                                         $columna2 = mysqli_fetch_array($consulta2, MYSQLI_ASSOC);
 
@@ -104,9 +106,11 @@
                                         echo "<td>$numSerie</td>";
                                         echo "<td>$marca</td>";
                                         echo "<td>$modelo</td>";
+                                        
+                                        echo "<td><a class='btn btn-outline-primary m-auto' href='devolverMaterial.php?varId=" . $numSerie. "'>Devolver</a></td>";
 
-                                        echo "<td><div class=\"form-check\">";
-                                        echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"$numSerie\" name=\"checkBox".$contador."\">";
+                                        // echo "<td><div class=\"form-check\">";
+                                        // echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"$numSerie\" name=\"checkBox".$contador."\">";
                                         echo "</div></td></tr>";
                                     }
                                 ?>
@@ -115,11 +119,11 @@
                     </table>
                 </div>
             </div>
-            <div class="container my-5">
+            <!-- <div class="container my-5">
                 <div class="row">
                     <button type="submit" class="btn btn-outline-primary m-auto" name="botonDevolver">Devolución</button>
                 </div>
-            </div>
+            </div> -->
         </form>
         
         <footer class="site-footer">

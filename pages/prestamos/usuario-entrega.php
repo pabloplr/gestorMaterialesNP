@@ -55,7 +55,7 @@
                                                 if (mysqli_num_rows($resultadod) < 3){
                                                     session_start();
                                                     $_SESSION["dni"] = $dni;
-                                                    echo "<script>location.href='entrega.php';</script>";
+                                                    echo "<script>location.href='entrega.php?dni=".$dni."';</script>";
                                                 } else {
                                                     echo "<div class='alert alert-danger' role='alert' style='margin: auto;margin-top: 2rem;text-align: center;'>El usuario no puede optar a más prestamos hasta que no haga alguna devolución.</div>";
                                                 }
