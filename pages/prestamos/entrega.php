@@ -145,6 +145,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">nº serie</th>
+                                    <th scope="col">Tipo</th>
                                     <th scope="col">Modelo</th>
                                     <th scope="col">Marca</th>
                                     <th scope="col">Prestar</th>
@@ -154,7 +155,7 @@
 
                                 <?php
                                 include '../../datosBBDD.php';
-                                if(isset($_GET['varId'])){
+                                if(isset($_GET['varId'])){//venimos de
                                     $material = $_GET['varId'];
                                 }else{
                                     if(isset($_POST["tipoObjeto"])){
@@ -166,12 +167,13 @@
                                 $conexionBD = mysqli_connect($servername, $username, $password, $database);
 
                                 echo $material;
-                                $SQL = "SELECT num_serie, marca, modelo FROM materiales WHERE estado = 'stock' AND nombre_materiales = '$material'";
+                                $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
                                 $consulta = mysqli_query($conexionBD, $SQL);
 
                                 while ($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
                                     $numSerie = $columna["num_serie"];
                                     $modelo = $columna["modelo"];
+                                    $tipo = $columna["nombre_materiales"];
                                     $marca = $columna["marca"];
 
                                     $value = $numSerie . "-" . date("Y/m/d") . "-" . date("Y/m/d", strtotime(date("Y/m/d") . "+ 15 day"));
@@ -179,6 +181,7 @@
                                     // echo "<option value='$value'> $numSerie - $marca, $modelo</option>";
                                     echo "<tr>
                                                     <td>$numSerie</td>
+                                                    <td>$tipo</td>
                                                     <td>$modelo</td>
                                                     <td>$marca</td>
                                                     <td><a class='btn btn-outline-primary m-auto' href='prestarMaterial.php?varId=" . $numSerie . "'></a></td>
