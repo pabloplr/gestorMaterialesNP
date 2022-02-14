@@ -60,81 +60,29 @@
     <form action="entrega.php" method="POST">
         <div class="container">
             <div class="row">
-                <div class="col-xl-2 col-lg-2 col-md-2 col-dm-2 col-12 text-center">
-                    <div class="form-check">
-                        <?php
-                        $GLOBALS['tipo_material'] = 'camara';
-                        if(isset($_GET['varId']) && $_GET['varId'] == 'camara'){
-                            echo '<input class="form-check-input" type="radio" name="tipoObjeto" value="camara" id="flexRadioDefault1" checked>';
-                        } else {
-                            echo '<input class="form-check-input" type="radio" name="tipoObjeto" value="camara" id="flexRadioDefault1">';
-                        }
-                        ?>
-                        <!-- <input class="form-check-input" type="radio" name="tipoObjeto" value="camara" id="flexRadioDefault1"> -->
-                        <label class="form-check-label" for="flexRadioDefault1">Cámara</label>
+                <form action="./entrega.php" method="POST" class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="text" class="form-control" id="num_serie" name="num_serie" placeholder="nº serie">
                     </div>
-                </div>
-
-                <div class="col-xl-2 col-lg-2 col-md-2 col-dm-2 col-12 text-center">
-                    <div class="form-check">
-                        <?php
-                        if(isset($_GET['varId']) && $_GET['varId'] == 'microfono'){
-                            echo '<input class="form-check-input" type="radio" name="tipoObjeto" value="microfono" id="flexRadioDefault2" checked>';
-                        } else {
-                            echo '<input class="form-check-input" type="radio" name="tipoObjeto" value="microfono" id="flexRadioDefault2">';
-                        }
-                        ?>                        
-                        <!-- <input class="form-check-input" type="radio" name="tipoObjeto" value="microfono" id="flexRadioDefault2"> -->
-                        <label class="form-check-label" for="flexRadioDefault2">Micrófono</label>
+                    <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+                </form>
+                <form action="./entrega.php" method="POST" style="margin-left: 80px;">
+                    <div class="form-row align-items-center">
+                        <div class="col-auto">
+                            <label class=" sr-only" for="inlineFormCustomSelect">Preference</label>
+                            <select class="custom-select mr-sm-2" id="tipo_filtro" name="tipo_filtro">
+                                <option value="auricular">Auricular</option>
+                                <option value="camara">Cámara</option>
+                                <option value="cable">Cable</option>
+                                <option value="microfono">Micrófono</option>
+                                <option value="tripode">Trípode</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-xl-2 col-lg-2 col-md-2 col-dm-2 col-12 text-center">
-                    <div class="form-check">
-                        <?php
-                        if(isset($_GET['varId']) && $_GET['varId'] == 'auricular'){
-                            echo '<input class="form-check-input" type="radio" name="tipoObjeto" value="auricular" id="flexRadioDefault2" checked>';
-                        } else {
-                            echo '<input class="form-check-input" type="radio" name="tipoObjeto" value="auricular" id="flexRadioDefault2">';
-                        }
-                        ?>                        
-                        <!-- <input class="form-check-input" type="radio" name="tipoObjeto" value="auricular" id="flexRadioDefault2"> -->
-                        <label class="form-check-label" for="flexRadioDefault2">Auriculares</label>
-                    </div>
-                </div>
-
-                <div class="col-xl-2 col-lg-2 col-md-2 col-dm-2 col-12 text-center">
-                    <div class="form-check">
-                        <?php
-                        if(isset($_GET['varId']) && $_GET['varId'] == 'tripode'){
-                            echo '<input class="form-check-input" type="radio" name="tipoObjeto" value="tripode" id="flexRadioDefault2" checked>';
-                        } else {
-                            echo '<input class="form-check-input" type="radio" name="tipoObjeto" value="tripode" id="flexRadioDefault2">';
-                        }
-                        ?>                        
-                        <!-- <input class="form-check-input" type="radio" name="tipoObjeto" value="tripode" id="flexRadioDefault2"> -->
-                        <label class="form-check-label" for="flexRadioDefault2">Trípode</label>
-                    </div>
-                </div>
-
-                <div class="col-xl-2 col-lg-2 col-md-2 col-dm-2 col-12 text-center">
-                    <div class="form-check">
-                        <?php
-                        if(isset($_GET['varId']) && $_GET['varId'] == 'cable'){
-                            echo '<input class="form-check-input" type="radio" name="tipoObjeto" value="cable" id="flexRadioDefault2" checked>';
-                        } else {
-                            echo '<input class="form-check-input" type="radio" name="tipoObjeto" value="cable" id="flexRadioDefault2">';
-                        }
-                        ?>                        
-                        <!-- <input class="form-check-input" type="radio" name="tipoObjeto" value="cable" id="flexRadioDefault2"> -->
-                        <label class="form-check-label" for="flexRadioDefault2">Cable</label>
-                    </div>
-                </div>
-
-
-                <div class="col-xl-2 col-lg-2 col-md-2 col-dm-2 col-12 text-center">
-                    <button type="submit" name="botonBuscar" class="btn btn-outline-primary">Buscar</button>
-                </div>
+                </form>
             </div>
 
             <div class="container">
@@ -155,19 +103,27 @@
 
                                 <?php
                                 include '../../datosBBDD.php';
-                                if(isset($_GET['varId'])){//venimos de
-                                    $material = $_GET['varId'];
-                                }else{
-                                    if(isset($_POST["tipoObjeto"])){
-                                        $material = $_POST["tipoObjeto"];
-                                    }
-                                }
-                                
+
+                                // if (isset($_GET['varId'])) { //venimos de
+                                //     $material = $_GET['varId'];
+                                // } else {
+                                //     if (isset($_POST["tipoObjeto"])) {
+                                //         $material = $_POST["tipoObjeto"];
+                                //     }
+                                // }
+
                                 error_reporting(0);
                                 $conexionBD = mysqli_connect($servername, $username, $password, $database);
 
-                                echo $material;
-                                $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
+                                if (isset($_POST['num_serie'])) {
+                                    $num_serie = $_POST['num_serie'];
+                                    $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock' AND num_serie = '$num_serie'";
+                                } else  if(isset($_POST['tipo_filtro'])){
+                                    $tipo_filtro = $_POST['tipo_filtro'];
+                                    $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock' AND nombre_materiales = '$tipo_filtro'";
+                                } else  {
+                                    $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
+                                }
                                 $consulta = mysqli_query($conexionBD, $SQL);
 
                                 while ($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
