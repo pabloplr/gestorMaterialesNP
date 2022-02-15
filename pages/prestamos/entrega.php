@@ -71,6 +71,7 @@
                         <div class="col-auto">
                             <label class=" sr-only" for="inlineFormCustomSelect">Preference</label>
                             <select class="custom-select mr-sm-2" id="tipo_filtro" name="tipo_filtro">
+                                <option value="todo">Todo</option>
                                 <option value="auricular">Auricular</option>
                                 <option value="camara">Cámara</option>
                                 <option value="cable">Cable</option>
@@ -127,10 +128,18 @@
 
                                 if (isset($_POST['num_serie'])) {
                                     $num_serie = $_POST['num_serie'];
-                                    $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock' AND num_serie = '$num_serie'";
+                                    if($_POST['num_serie'] == ''){
+                                        $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
+                                    }else{
+                                        $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock' AND num_serie = '$num_serie'";
+                                    }
                                 } else  if(isset($_POST['tipo_filtro'])){
                                     $tipo_filtro = $_POST['tipo_filtro'];
-                                    $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock' AND nombre_materiales = '$tipo_filtro'";
+                                    if($_POST['tipo_filtro'] == 'todo'){
+                                        $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
+                                    }else{
+                                        $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock' AND nombre_materiales = '$tipo_filtro'";
+                                    }
                                 } else  {
                                     $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
                                 }

@@ -59,18 +59,20 @@
     <div class="container p-4">
         <div class="d-flex flex-row justify-content-between">
             <div>
-                <form class="form-inline my-2 my-lg-0 align-middle">
-                    <input class="form-control mr-sm-2 border" type="search" placeholder="Buscar" aria-label="Search">
+                <form class="form-inline my-2 my-lg-0 align-middle" action="./materiales.php" method="POST" class="form-inline">
+                    <input class="form-control mr-sm-2 border" type="search" placeholder="Buscar" aria-label="Search"id="num_serie" name="num_serie">
                     <button class="btn  my-2 my-sm-0 btn-outline-primary btn-primary-np-blue" type="submit">Buscar</button>
                 </form>
             </div>
             <div>
-                <form class="form-inline my-2 my-lg-0 align-middle">
-                    <select class="form-control mr-sm-2" id="exampleFormControlSelect1">
-                        <option value="marca">marca</option>
-                        <option value="modelo">modelo</option>
-                        <option value="estado">estado</option>
-                        <option value="nombre_materiales">tipo</option>
+                <form class="form-inline my-2 my-lg-0 align-middle" action="./materiales.php" method="POST">
+                    <select class="form-control mr-sm-2" id="tipo_filtro" name="tipo_filtro">
+                        <option value="todo">Todo</option>
+                        <option value="auricular">Auricular</option>
+                        <option value="camara">Cámara</option>
+                        <option value="cable">Cable</option>
+                        <option value="microfono">Micrófono</option>
+                        <option value="tripode">Trípode</option>
                     </select>
                     <button class="btn  my-2 my-sm-0 btn-outline-primary btn-primary-np-blue" type="submit">Filtrar</button>
                 </form>
@@ -146,12 +148,29 @@
                                 //     echo "</tr>";
                                 // }
 
-                                function obtenerTodos()
-                                {
+                                function obtenerTodos(){
                                     include '../../datosBBDD.php';
                                     $datos =  [];
                                     $conexionBD = mysqli_connect($servername, $username, $password, $database);
-                                    $consulta = mysqli_query($conexionBD, "SELECT * FROM materiales");
+                                    if (isset($_POST['num_serie'])) {
+                                        $num_serie = $_POST['num_serie'];
+                                        if($_POST['num_serie'] == ''){
+                                            $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
+                                        }else{
+                                            $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock' AND num_serie = '$num_serie'";
+                                        }
+                                    } else  if(isset($_POST['tipo_filtro'])){
+                                        $tipo_filtro = $_POST['tipo_filtro'];
+                                        if($_POST['tipo_filtro'] == 'todo'){
+                                            $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
+                                        }else{
+                                            $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock' AND nombre_materiales = '$tipo_filtro'";
+                                        }
+                                    } else  {
+                                        $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
+                                    }
+
+                                    $consulta = mysqli_query($conexionBD, $SQL);
                                     while ($dato = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
                                         $datos[] = $dato;
                                     }
