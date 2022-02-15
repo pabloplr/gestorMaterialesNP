@@ -51,8 +51,9 @@
                                     if ($resultadodw = mysqli_query($conn, "SELECT moroso FROM usuarios WHERE dni = '$dni'")) {
                                         $columna = mysqli_fetch_array($resultadodw, MYSQLI_ASSOC);
                                         if ($columna["moroso"] == 0){
-                                            if ($resultadod = mysqli_query($conn, "SELECT dni FROM prestamos WHERE dni = '$dni'")) {
-                                                if (mysqli_num_rows($resultadod) < 3){
+                                            if ($resultadod = mysqli_query($conn, "SELECT num_objetos FROM usuarios WHERE dni = '$dni'")) {
+                                                $columna_num_objetos = mysqli_fetch_array($resultadod, MYSQLI_ASSOC);
+                                                if ($columna_num_objetos['num_objetos'] < 3){
                                                     session_start();
                                                     $_SESSION["dni"] = $dni;
                                                     echo "<script>location.href='entrega.php?dni=".$dni."';</script>";
