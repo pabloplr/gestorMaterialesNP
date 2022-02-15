@@ -15,6 +15,14 @@
         <link rel="stylesheet" type="text/css" href="../../css/index/util.css">
         <link rel="stylesheet" type="text/css" href="../../css/index/main.css">
         <title>Nuevas Profesiones</title>
+        <style>
+            a{
+                color: white;
+            }
+            button:hover a{
+                color: black
+            }
+        </style>
     </head>
 
     <body>
@@ -32,6 +40,7 @@
 
                         <div class="container-login100-form-btn p-t-10">
                             <button class="login100-form-btn" name="continuar">Continuar</button>
+                            <button type="button" class="login100-form-btn mt-3" name="volver" ><a href="../principal.php" style="text-decoration: none;font-weight: bold;width: 100%; height: 100%; padding-top: 7%;">Volver</a></button>
                         </div>
                         
                         <?php
