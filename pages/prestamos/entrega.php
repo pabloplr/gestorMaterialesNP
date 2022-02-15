@@ -121,7 +121,8 @@
                                 echo "pary hard: " . $resultado_tus_muelas['num_objetos'];
                                 if($resultado_tus_muelas['num_objetos'] >= 3){
                                     echo '<script>alert("Este usuario supera el límite de materiales prestados")</script>';
-                                    header('Location: ../principal.php');
+                                    echo '<script>window.location.href="../principal.php"</script>';
+                                    // header('Location: ../principal.php');
                                 }
 
                                 if (isset($_POST['num_serie'])) {
