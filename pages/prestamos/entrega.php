@@ -114,6 +114,15 @@
 
                                 error_reporting(0);
                                 $conexionBD = mysqli_connect($servername, $username, $password, $database);
+                                $dni = $_GET['dni'];
+                                $query_num_obj = "SELECT num_objetos FROM usuarios WHERE dni = '$dni';";
+                                $consulta_num_obj = mysqli_query($conexionBD, $query_num_obj);
+                                $resultado_tus_muelas = mysqli_fetch_array($consulta_num_obj, MYSQLI_ASSOC);
+                                echo "pary hard: " . $resultado_tus_muelas['num_objetos'];
+                                if($resultado_tus_muelas['num_objetos'] >= 3){
+                                    echo '<script>alert("Este usuario supera el límite de materiales prestados")</script>';
+                                    header('Location: ../principal.php');
+                                }
 
                                 if (isset($_POST['num_serie'])) {
                                     $num_serie = $_POST['num_serie'];
