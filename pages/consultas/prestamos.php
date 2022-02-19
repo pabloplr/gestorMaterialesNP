@@ -70,7 +70,7 @@
                                         <th class="cell100 column2">DNI</th>
                                         <th class="cell100 column3">Fecha préstamo</th>
                                         <th class="cell100 column3">Fecha devolución</th>
-                                        <th class="cell100 column4">Fecha máxima</th>
+                                        <th class="cell100 column3">Fecha máxima</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -87,23 +87,24 @@
 
                                     while ($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
                                         echo "<tr>";
-                                        echo "<td class='cell100 column1'>" . $columna["num_serie"] . "</td>";
-                                        echo "<td class='cell100 column2'>" . $columna["dni"] . "</td>";
+                                        echo "<td class='cell100 column1'><a href='../gestion/actualizar/actualizar-materiales.php?varId2=".$columna["num_serie"]."'>" . $columna["num_serie"] . "</a></td>";
+                                        echo "<td class='cell100 column2'><a href='../gestion/actualizar/actualizar-usuarios.php?varId2=".$columna["dni"]."'>" . $columna["dni"] . "</a></td>"; 
                                         echo "<td class='cell100 column3'>" . $columna["fecha_prestamo"] . "</td>";
                                         echo "<td class='cell100 column3'>" . $columna["fecha_devolucion"] . "</td>";
-                                        echo "<td class='cell100 column4'>" . $columna["fecha_maxima"] . "</td>";
+                                        echo "<td class='cell100 column3'>" . $columna["fecha_maxima"] . "</td>";
                                         echo "</tr>";
                                     }
                                     ?>
                                 </tbody>
                             </table>
+                            <a href="../gestion/actualizar/actualizarMateriales?Varid2"></a>
                         </div>
                     </div>	
                 </div>	
             </div>	
         </div>	
     
-        <footer class="site-footer">
+        <footer class="site-footer ">
             <div class="container">
               <div class="row">
                 <div class="col-lg-4">

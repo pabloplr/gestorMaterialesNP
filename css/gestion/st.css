@@ -241,8 +241,8 @@ td {
 }
 
 .table100-body td {
-    padding-top: 16px;
-    padding-bottom: 16px;
+    /* padding-top: 16px;
+    padding-bottom: 16px; */
 }
 
 
@@ -262,8 +262,8 @@ td {
 }
 
 .table100-body {
-    max-height: 585px;
-    overflow: auto;
+    /* max-height: 585px;
+    overflow: auto; */
 }
 
 

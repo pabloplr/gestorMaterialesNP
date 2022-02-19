@@ -66,12 +66,13 @@
                             <table>
                                 <thead>
                                     <tr class="row100 head">
-                                        <th class="cell100 column1">DNI</th>
-                                        <th class="cell100 column2">NOMBRE</th>
-                                        <th class="cell100 column3">APELLIDOS</th>
-                                        <th class="cell100 column4">CURSO</th>
-                                        <th class="cell100 column5">CICLO</th>
-                                        <th class="cell100 column6">NUM. OBJETOS</th>
+                                        <th class="cell100 column1">Dni</th>
+                                        <th class="cell100 column2">Nombre</th>
+                                        <th class="cell100 column3">Apellidos</th>
+                                        <th class="cell100 column4">Curso</th>
+                                        <th class="cell100 column5">Ciclo</th>
+                                        <th class="cell100 column6">Num. objetos</th>
+                                        <th class="cell100 column6">Opciones</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -94,6 +95,7 @@
                                         echo "<td class='cell100 column4'>" . $columna["curso"] . "</td>";
                                         echo "<td class='cell100 column5'>" . $columna["ciclo"] . "</td>";
                                         echo "<td class='cell100 column6'>" . $columna["num_objetos"] . "</td>";
+                                        echo "<td class='cell100 column6'><a href='./borrarMoroso.php?dni=".$columna["dni"]."'>Quitar Moroso</a></td>";
                                         echo "</tr>";
                                     }
                                     ?>
@@ -105,7 +107,7 @@
             </div>	
         </div>	
     
-        <footer class="site-footer">
+        <footer class="site-footer ">
             <div class="container">
               <div class="row">
                 <div class="col-lg-4">
