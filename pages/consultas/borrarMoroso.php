@@ -34,6 +34,7 @@
                 exit();
             }else{
                 $SQL = "UPDATE usuarios SET moroso = 0 WHERE dni = '$dni'";
+                actualizarMateriales($dni);
                 // if(mysqli_query($conexionBD, "DELETE FROM usuarios WHERE dni = '$dni'")){
                 if(mysqli_query($conexionBD, $SQL)){
                     $retorno = true;
@@ -44,6 +45,16 @@
         return $retorno;
     }
 
+    function actualizarMateriales($dni_moroso){
+        include '../../datosBBDD.php';
+        include '../../utilidades/utilidadesMateriales.php';
+        $conexionBD = mysqli_connect($servername, $username, $password, $database);
+        $SQL6 = "SELECT * FROM prestamos WHERE fecha_devolucion = '0000-00-00' OR fecha_devolucion IS NULL AND dni ='".$dni_moroso."';";
+        $consulta = mysqli_query($conexionBD, $SQL6);
+        while($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)){
+            devolverMaterial($columna['dni'],$columna['num_serie']);
+        }
+    }
 
     ?>
 

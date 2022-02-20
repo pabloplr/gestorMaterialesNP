@@ -11,6 +11,11 @@
         <link rel="stylesheet" href="../../css/gestion/st.css">
         <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
         <title>Nuevas Profesiones</title>
+        <?php
+        // include '../../datosBBDD.php';
+        include './actualizarMorosos.php';
+        actualizarMorosos();
+        ?>
     </head>
 
     <body>
