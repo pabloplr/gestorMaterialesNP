@@ -1,3 +1,9 @@
 # gestorMaterialesNP
-hoola
-vamos a por la buena asldfhaslkjdfhlaskdjfhalskjdfhlaksjh
+TODO LIST
+
+mensajito cuando prestado
+moroso dar vuelta
+exportar bbdd
+
+DOING
+validacionn insertar materiales

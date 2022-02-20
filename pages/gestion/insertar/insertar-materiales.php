@@ -60,45 +60,61 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                    <form class="jumbotron" method="POST" action="insertar-materiales.php" enctype="multipart/form-data">
+                    <form class="jumbotron needs-validation" method="POST" action="insertar-materiales.php" enctype="multipart/form-data" novalidate>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Número de Serie:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="num_serie" name="num_serie" class="form-control" placeholder="nº de serie" autocomplete="off">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Material:</label>
-                            <div class="col-sm-10">
-                                <select class="custom-select" id="inputGroupSelect04" name="nombre_material">
-                                    <option value="camara" selected>Cámara</option>
-                                    <option value="auricular">Auriculares</option>
-                                    <option value="cable">Cables</option>
-                                    <option value="microfono">Micrófono</option>
-                                    <option value="tripode">Trípode</option>
-                                </select>
+                                <input type="text" id="num_serie" name="num_serie" class="form-control" placeholder="nº de serie" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Se necesita un nº de serie.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Marca:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="marca" name="marca" class="form-control" placeholder="nombre marca" autocomplete="off">
+                                <input type="text" id="marca" name="marca" class="form-control" placeholder="nombre marca" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Se necesia una marca.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Material:</label>
+                            <div class="col-sm-10">
+                                <select class="custom-select form-control" id="inputGroupSelect04" name="nombre_material" required>
+                                    <option value="">Elige un tipo de material</option>
+                                    <option value="camara">Cámara</option>
+                                    <option value="auricular">Auriculares</option>
+                                    <option value="cable">Cables</option>
+                                    <option value="microfono">Micrófono</option>
+                                    <option value="tripode">Trípode</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Se necesia un material.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Modelo:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="modelo" name="modelo" class="form-control" placeholder="nombre modelo" autocomplete="off">
+                                <input type="text" id="modelo" name="modelo" class="form-control" placeholder="nombre modelo" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Se necesia un modelo.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Estado:</label>
                             <div class="col-sm-10">
-                                <select class="custom-select" id="inputGroupSelect04" name="estado">
+                                <select class="custom-select" id="inputGroupSelect04" class="form-control" name="estado" required>
                                     <option value="stock" selected>Stock</option>
                                     <option value="prestamo">Prestamo</option>
                                     <option value="reparacion">Reparación</option>
                                 </select>
+                                <div class="invalid-feedback">
+                                    Selecciona un estado.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -123,7 +139,26 @@
                             </div>
                         </div>
                     </form>
-                    
+                    <script>
+                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                            });
+                        }, false);
+                        })();
+                    </script>
                     <?php
                                     include '../../../datosBBDD.php';
 

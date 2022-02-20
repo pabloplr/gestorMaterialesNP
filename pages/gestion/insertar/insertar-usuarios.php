@@ -60,52 +60,74 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                    <form class="jumbotron" method="POST" action="insertar-usuarios.php">
+                    <form class="jumbotron needs-validation" method="POST" action="insertar-usuarios.php" novalidate>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">DNI:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="dni" name="dni" class="form-control" placeholder="DNI" autocomplete="off">
+                                <input type="text" id="dni" name="dni" class="form-control" placeholder="DNI" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Se necesita un DNI.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nombre:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="nombre_usuarios" name="nombre_usuarios" class="form-control" placeholder="nombre" autocomplete="off">
+                                <input type="text" id="nombre_usuarios" name="nombre_usuarios" class="form-control" placeholder="nombre" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Se necesita un nombre.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Apellidos:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="apellidos" autocomplete="off">
+                                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="apellidos" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Se necesitan un apellidos.
+                                </div>
                             </div>
                         </div>
                         <!-- TODO correo -->
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Correo:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="" name="" class="form-control" placeholder="correo@campuscamara.es" autocomplete="off">
+                                <input type="text" id="" name="" class="form-control" placeholder="correo@campuscamara.es" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Se necesita un correo.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Curso:</label>
                             <div class="col-sm-10">
-                                <input type="number" id="curso" name="curso" class="form-control" placeholder="curso (1º, 2º, ...)" autocomplete="off">
+                                <input type="number" id="curso" name="curso" class="form-control" placeholder="curso (1º, 2º, ...)" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Se necesita un curso.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Ciclo:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="ciclo" name="ciclo" class="form-control" placeholder="ciclo" autocomplete="off">
+                                <input type="text" id="ciclo" name="ciclo" class="form-control" placeholder="ciclo" autocomplete="off" required>
+                                <div class="invalid-feedback">
+                                    Se necesita un ciclo.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Rol:</label>
                             <div class="col-sm-10">
-                                <select class="custom-select" id="inputGroupSelect04" name="rol">
-                                    <option value="usuario" selected>Usuario</option>
+                                <select class="custom-select" id="inputGroupSelect04" name="rol" required>
+                                    <option value="">Elige un rol</option>
+                                    <option value="usuario">Usuario</option>
                                     <option value="administrador">Administrador</option>
                                     <option value="servicio_tecnico">Servicio Técnico</option>
                                 </select>
+                                <div class="invalid-feedback">
+                                    Escoge un Rol.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -114,6 +136,26 @@
                             </div>
                         </div>
                     </form>
+                    <script>
+                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                            });
+                        }, false);
+                        })();
+                    </script>
                     
                     <?php
                                     include '../../../datosBBDD.php';
