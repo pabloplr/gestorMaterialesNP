@@ -81,11 +81,14 @@
                             while ($columnaMateriales = mysqli_fetch_array($resMateriales, MYSQLI_ASSOC)) {
                                 $marca = $columnaMateriales["marca"];
                                 $modelo = $columnaMateriales["modelo"];
-                                $ruta = $columnaMateriales["ruta"];
+                                $ruta = "../" . $columnaMateriales["ruta"];
+                                if($ruta == "../img/materiales/"){
+                                    $ruta = "../img/img_defecto.png";
+                                }
 
                                 echo "<div class=\"col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center align-items-center\">";
                                 echo "<div class=\"card\" class=\"bloqueItem\">";
-                                echo "<img src=\"../$ruta\" class=\"card-img-top\" alt=\"...\">";
+                                echo "<img src=\"$ruta\" class=\"card-img-top\" alt=\"...\">";
                                 echo "<div class=\"card\" style=\"width: 18rem;\">";
                                 echo "<ul class=\"list-group list-group-flush\">";
                                 echo "<div class=\"row mt-3\">";
