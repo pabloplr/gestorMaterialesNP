@@ -62,7 +62,24 @@
         <div class="container titulhr">
             <h2 class="titulo">MOROSOS</h2>     
         </div>
-        
+        <div class="contieneAlerta text-center" style="width: 70%; margin: 0 auto;">
+        <?php
+            if(isset($_GET['estado'])){
+                if($_GET['estado'] == 'actualizado'){
+                    echo '<div class="alert alert-primary text-center" role="alert">
+                    ¡Material actualizado con éxito!
+                  </div>';
+                }elseif($_GET['estado'] == 'borrado'){
+                    echo '<div class="alert alert-danger text-center" role="alert">
+                    ¡Usuario moroso borrado con éxito!
+                  </div>';
+                }
+                echo "<script>
+                setTimeout( () => { document.querySelector('.contieneAlerta').removeChild(document.querySelector('.alert')) }, 5000)    
+            </script>";
+            }
+        ?>
+        </div>
         <div class="limiter">
             <div class="container-table100">
                 <div class="wrap-table100">
@@ -94,13 +111,13 @@
 
                                     while ($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
                                         echo "<tr>";
-                                        echo "<td class='cell100 column1'>" . $columna["dni"] . "</td>";
-                                        echo "<td class='cell100 column2'>" . $columna["nombre_usuarios"] . "</td>";
-                                        echo "<td class='cell100 column3'>" . $columna["apellidos"] . "</td>";
-                                        echo "<td class='cell100 column4'>" . $columna["curso"] . "</td>";
-                                        echo "<td class='cell100 column5'>" . $columna["ciclo"] . "</td>";
-                                        echo "<td class='cell100 column6'>" . $columna["num_objetos"] . "</td>";
-                                        echo "<td class='cell100 column6'><a href='./borrarMoroso.php?dni=".$columna["dni"]."'>Quitar Moroso</a></td>";
+                                        echo "<td class='cell100 p-2 column1'>" . $columna["dni"] . "</td>";
+                                        echo "<td class='cell100 p-2 column2'>" . $columna["nombre_usuarios"] . "</td>";
+                                        echo "<td class='cell100 p-2 column3'>" . $columna["apellidos"] . "</td>";
+                                        echo "<td class='cell100 p-2 column4'>" . $columna["curso"] . "</td>";
+                                        echo "<td class='cell100 p-2 column5'>" . $columna["ciclo"] . "</td>";
+                                        echo "<td class='cell100 p-2 column6'>" . $columna["num_objetos"] . "</td>";
+                                        echo "<td class='cell100 p-2 column6'><a href='./borrarMoroso.php?dni=".$columna["dni"]."'>Quitar Moroso</a></td>";
                                         echo "</tr>";
                                     }
                                     ?>

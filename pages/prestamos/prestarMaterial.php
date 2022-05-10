@@ -25,5 +25,5 @@ if ($consulta = mysqli_query($conexion, $actualizar)) {
     echo "<div class='alert alert-danger' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>El material no se actualizó por un error inesperado.</div>";
 }
 echo "material prestado";
-header('Location: ./entrega.php?dni=' . $dni);
+header('Location: ./entrega.php?dni=' . $dni . '&estado=entregado');
 ?>

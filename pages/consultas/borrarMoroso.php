@@ -19,7 +19,7 @@
     if (!$cumplido) {
         $error = "Error al quitar de moroso el usuario seleccionado";
     }else{
-        header("Location: morosos.php");
+        header("Location: morosos.php?estado=borrado");
     }
 
 

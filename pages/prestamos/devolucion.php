@@ -56,7 +56,20 @@
         <div class="container titulhr">
             <h2 class="titulo">Préstamos | Devolución Materiales</h2>    
         </div>
-
+        <div class="contieneAlerta text-center" style="width: 75%; margin: 0 auto;">
+    <?php
+            if(isset($_GET['estado'])){
+                if($_GET['estado'] == 'devuelto'){
+                    echo '<div class="alert alert-primary text-center" role="alert">
+                    ¡Material devuelto con éxito!
+                  </div>';
+                }
+                echo "<script>
+                setTimeout( () => { document.querySelector('.contieneAlerta').removeChild(document.querySelector('.alert')) }, 5000)    
+            </script>";
+            }
+        ?>
+        </div>
         <form action="devolucion.php" method="POST">
             <div class="container">
                 <div class="row">

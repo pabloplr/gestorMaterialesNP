@@ -187,7 +187,7 @@
                                     $SQL = "INSERT INTO usuarios (dni, nombre_usuarios, apellidos, curso, rol, ciclo) VALUES ('$dni','$nombre','$apellidos','$curso','$rol','$ciclo')";
 
                                     if (mysqli_query($conexion, $SQL)) {
-                                        echo "<div class='alert alert-success' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>Usuario insertado con éxito!</div>";
+                                        echo "<div class='alert alert-success' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>¡Usuario insertado con éxito!</div>";
                                     } else {
                                         echo "<div class='alert alert-danger' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>El usuario no fue insertado por un error inesperado.</div>";
                                     }

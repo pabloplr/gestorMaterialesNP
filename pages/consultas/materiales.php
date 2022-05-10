@@ -56,6 +56,25 @@
     <div class="container titulhr">
         <h2 class="titulo">MATERIALES</h2>
     </div>
+    <!-- aqui -->
+    <div class="contieneAlerta text-center" style="width: 75%; margin: 0 auto;">
+        <?php
+            if(isset($_GET['estado'])){
+                if($_GET['estado'] == 'actualizado'){
+                    echo '<div class="alert alert-primary text-center" role="alert">
+                    ¡Material actualizado con éxito!
+                  </div>';
+                }elseif($_GET['estado'] == 'borrado'){
+                    echo '<div class="alert alert-danger text-center" role="alert">
+                    ¡Material borrado con éxito!
+                  </div>';
+                }
+                echo "<script>
+                setTimeout( () => { document.querySelector('.contieneAlerta').removeChild(document.querySelector('.alert')) }, 5000)    
+            </script>";
+            }
+        ?>
+        </div>
     <div class="container p-4">
         <div class="d-flex flex-row justify-content-between">
             <div>
@@ -86,15 +105,15 @@
                     <div class="table100-head">
                         <table>
                             <thead>
-                                <tr class="row100 head">
-                                    <th class="cell100 column1">NUMº SERIE</th>
-                                    <th class="cell100 column2">MARCA</th>
-                                    <th class="cell100 column3">MODELO</th>
-                                    <th class="cell100 column4">IMAGEN</th>
-                                    <th class="cell100 column5">ESTADO</th>
-                                    <th class="cell100 column6">TIPO</th>
-                                    <th class="cell100 column7">EDITAR</th>
-                                    <th class="cell100 column7">BORRAR</th>
+                                <tr class="row100 m-3 head">
+                                    <th class="cell100 p-2 column1">NUMº SERIE</th>
+                                    <th class="cell100 p-2 column2">MARCA</th>
+                                    <th class="cell100 p-2 column3">MODELO</th>
+                                    <th class="cell100 p-2 column4">IMAGEN</th>
+                                    <th class="cell100 p-2 column5">ESTADO</th>
+                                    <th class="cell100 p-2 column6">TIPO</th>
+                                    <th class="cell100 p-2 column7">EDITAR</th>
+                                    <th class="cell100 p-2 column7">BORRAR</th>
                                 </tr>
                             </thead>
                         </table>
@@ -103,10 +122,10 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td colspan="8">
+                                    <td colspan="8" class="p-2">
                                         <div class="d-flex justify-content-center">
                                             <form action="./../gestion/insertar/insertar-materiales.php" method="post">
-                                                <input class="btn  my-2 my-sm-0 btn-outline-success align-self-center border border-success" type="submit" value="Añadir material">
+                                                <input class="btn m-2 my-sm-0 btn-outline-success align-self-center border border-success" type="submit" value="Añadir material">
                                             </form>
                                             <!-- <button class="btn  my-2 my-sm-0 btn-outline-success align-self-center ">Añadir material  <i class="far fa-plus-square"></i></button> -->
                                         </div>
@@ -121,18 +140,18 @@
                                 $columna = obtenerTodos();
                                 for ($i = 0; $i < count($columna); $i++) {
                                     echo "<tr>";
-                                    echo "<td class='cell100 column1'>" . $columna[$i]["num_serie"] . "</td>";
-                                    echo "<td class='cell100 column2'>" . $columna[$i]["marca"] . "</td>";
-                                    echo "<td class='cell100 column3'>" . $columna[$i]["modelo"] . "</td>";
+                                    echo "<td class='cell100 column1 p-1'>" . $columna[$i]["num_serie"] . "</td>";
+                                    echo "<td class='cell100 column2 p-1'>" . $columna[$i]["marca"] . "</td>";
+                                    echo "<td class='cell100 column3 p-1'>" . $columna[$i]["modelo"] . "</td>";
                                     if ($columna[$i]["ruta"] == "" || $columna[$i]["ruta"] == "img/materiales/") {
-                                        echo "<td class='cell100 column4'><img src='../../img/img_defecto.png" . "'></td>";
+                                        echo "<td class='cell100 column4 p-1'><img src='../../img/img_defecto.png" . "'></td>";
                                     } else {
-                                        echo "<td class='cell100 column4'><img src='../../" . $columna[$i]["ruta"] . "'></td>";
+                                        echo "<td class='cell100 column4 p-1'><img src='../../" . $columna[$i]["ruta"] . "'></td>";
                                     }
-                                    echo "<td class='cell100 column5'>" . $columna[$i]["estado"] . "</td>";
-                                    echo "<td class='cell100 column6'>" . $columna[$i]["nombre_materiales"] . "</td>";
-                                    echo "<td class='cell100 column7'><a href='../gestion/actualizar/actualizar-materiales.php?varId2=" . $columna[$i]["num_serie"] . "'><img src='../../img/editar.png'></a></td>";
-                                    echo "<td class='cell100 column7'><a href='deleteMaterial.php?varId=" . $columna[$i]["num_serie"] . "'><img src='../../img/delete.png'></a></td>";
+                                    echo "<td class='cell100 column5 p-1'>" . $columna[$i]["estado"] . "</td>";
+                                    echo "<td class='cell100 column6 p-1'>" . $columna[$i]["nombre_materiales"] . "</td>";
+                                    echo "<td class='cell100 column7 p-1'><a href='../gestion/actualizar/actualizar-materiales.php?varId2=" . $columna[$i]["num_serie"] . "'><img src='../../img/editar.png'></a></td>";
+                                    echo "<td class='cell100 column7 p-1'><a href='deleteMaterial.php?varId=" . $columna[$i]["num_serie"] . "'><img src='../../img/delete.png'></a></td>";
                                     echo "</tr>";
                                 }
                                 // while ($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {

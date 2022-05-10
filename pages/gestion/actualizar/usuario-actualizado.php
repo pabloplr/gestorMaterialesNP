@@ -17,7 +17,7 @@ echo $ciclo;
 $update = "UPDATE usuarios SET nombre_usuarios = '$nombre', apellidos = '$apellidos', curso = '$curso', rol = '$rol', ciclo = '$ciclo' WHERE dni = '$dniSession'";
 $conexion = mysqli_connect($servername, $username, $password, $database);
 if (mysqli_query($conexion, $update)) {
-    header('Location: ./../../consultas/usuarios.php');} else {
+    header('Location: ./../../consultas/usuarios.php?estado=actualizado');} else {
     echo "<div class='alert alert-danger' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>El usuario no se actualizó por un error inesperado.</div>";
 }
 

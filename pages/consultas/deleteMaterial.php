@@ -19,7 +19,7 @@
     if (!$cumplido) {
         $error = "Error al borrar el material seleccionado";
     }else{
-        header("Location: materiales.php");
+        header("Location: materiales.php?estado=borrado");
     }
 
 

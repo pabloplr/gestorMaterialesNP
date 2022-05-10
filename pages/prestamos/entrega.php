@@ -56,7 +56,20 @@
     <div class="container titulhr">
         <h2 class="titulo">Préstamos | Prestar Materiales</h2>
     </div>
-
+    <div class="contieneAlerta text-center" style="width: 75%; margin: 0 auto;">
+    <?php
+            if(isset($_GET['estado'])){
+                if($_GET['estado'] == 'entregado'){
+                    echo '<div class="alert alert-primary text-center" role="alert">
+                    ¡Material entregado con éxito!
+                  </div>';
+                }
+                echo "<script>
+                setTimeout( () => { document.querySelector('.contieneAlerta').removeChild(document.querySelector('.alert')) }, 5000)    
+            </script>";
+            }
+        ?>
+        </div>
     <form action="entrega.php" method="POST">
         <div class="container">
             <div class="row">
@@ -118,9 +131,9 @@
                                 $dni = $_GET['dni'];
                                 $query_num_obj = "SELECT num_objetos FROM usuarios WHERE dni = '$dni';";
                                 $consulta_num_obj = mysqli_query($conexionBD, $query_num_obj);
-                                $resultado_tus_muelas = mysqli_fetch_array($consulta_num_obj, MYSQLI_ASSOC);
-                                echo "pary hard: " . $resultado_tus_muelas['num_objetos'];
-                                if($resultado_tus_muelas['num_objetos'] >= 3){
+                                $resultado_tu = mysqli_fetch_array($consulta_num_obj, MYSQLI_ASSOC);
+                                // echo "pary hard: " . $resultado_tu['num_objetos'];
+                                if($resultado_tu['num_objetos'] >= 3){
                                     echo '<script>alert("Este usuario supera el límite de materiales prestados")</script>';
                                     echo '<script>window.location.href="../principal.php"</script>';
                                     // header('Location: ../principal.php');
