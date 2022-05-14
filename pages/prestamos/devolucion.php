@@ -23,6 +23,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item ml-2 active">
+                        <a class="nav-link" href="../peticiones/peticiones.php">Peticiones</a>
+                    </li>
+
                         <li class="nav-item ml-2 active dropdown">
                             <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">Gestión</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
