@@ -65,6 +65,10 @@
                 echo '<div class="alert alert-primary text-center" role="alert">
                     ¡Material entregado con éxito!
                   </div>';
+            }elseif($_GET['estado'] == 'fallo'){
+                echo '<div class="alert alert-primary text-center" role="alert">
+                Nº máximo de préstamos realizado, devuelve algún material para continuar.
+              </div>';
             }
             echo "<script>
                 setTimeout( () => { document.querySelector('.contieneAlerta').removeChild(document.querySelector('.alert')) }, 5000)    
@@ -105,7 +109,7 @@
                                         echo "<td>". $dato['modelo'] ."</td>";
                                         // Hay que comprobar si el material esta en stock // Comprobar cuantos materiales tiene el usuario con ese dni
                                         echo "<td><a class='btn btn-outline-primary m-auto' href='./aceptaPeticion.php?varId=" . $dato['num_serie'] . "&dni=" . $dato['dni'] . "'>Aceptar</a></td>";
-                                        echo "<td><a class='btn btn-outline-danger m-auto' href='./aceptaPeticion.php?varId=" . $dato['num_serie'] . "&dni=" . $dato['dni'] . "'>Rechazar</a></td>";
+                                        echo "<td><a class='btn btn-outline-danger m-auto' href='./rechazaPeticion.php?varId=" . $dato['num_serie'] . "&dni=" . $dato['dni'] . "'>Rechazar</a></td>";
                                         echo "</tr>";
                                         
                                     }
