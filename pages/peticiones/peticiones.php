@@ -66,8 +66,12 @@
                     ¡Material entregado con éxito!
                   </div>';
             }elseif($_GET['estado'] == 'fallo'){
-                echo '<div class="alert alert-primary text-center" role="alert">
+                echo '<div class="alert alert-danger text-center" role="alert">
                 Nº máximo de préstamos realizado, devuelve algún material para continuar.
+              </div>';
+            }elseif($_GET['estado'] == 'rechazado'){
+                echo '<div class="alert alert-danger text-center" role="alert">
+                Petición rechazada. Se eliminó de la base de datos.
               </div>';
             }
             echo "<script>
