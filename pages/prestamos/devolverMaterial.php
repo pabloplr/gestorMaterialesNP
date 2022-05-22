@@ -24,7 +24,7 @@ if ($consulta = mysqli_query($conexion, $actualizarEstado)) {
     echo "<div class='alert alert-danger' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>El material no se actualizó por un error inesperado.</div>";
 }
 
-header('Location: ./devolucion.php');
+header('Location: ./devolucion.php?estado=devuelto');
 
 
 

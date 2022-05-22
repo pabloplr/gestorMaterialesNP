@@ -23,6 +23,9 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto ">
+                <li class="nav-item ml-2 active">
+                        <a class="nav-link" href="../peticiones/peticiones.php">Peticiones</a>
+                    </li>
                     <li class="nav-item ml-2 active dropdown">
                         <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">Gestión</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -56,6 +59,25 @@
     <div class="container titulhr">
         <h2 class="titulo">USUARIOS</h2>
     </div>
+    <!-- aqui -->
+    <div class="contieneAlerta text-center" style="width: 75%; margin: 0 auto;">
+        <?php
+            if(isset($_GET['estado'])){
+                if($_GET['estado'] == 'actualizado'){
+                    echo '<div class="alert alert-primary text-center" role="alert">
+                    ¡Usuario actualizado con éxito!
+                  </div>';
+                }elseif($_GET['estado'] == 'borrado'){
+                    echo '<div class="alert alert-danger text-center" role="alert">
+                    ¡Material borrado con éxito!
+                  </div>';
+                }
+                echo "<script>
+                setTimeout( () => { document.querySelector('.contieneAlerta').removeChild(document.querySelector('.alert')) }, 5000)    
+            </script>";
+            }
+        ?>
+        </div>
 
     <div class="limiter">
         <div class="container-table100">

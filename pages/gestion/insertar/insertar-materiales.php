@@ -23,6 +23,9 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item ml-2 active">
+                        <a class="nav-link" href="../../peticiones/peticiones.php">Peticiones</a>
+                    </li>
                         <li class="nav-item active dropdown">
                             <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">Gestión</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -193,7 +196,7 @@
                                     $SQL = "INSERT INTO materiales (num_serie, nombre_materiales, marca, modelo, estado, observaciones, ruta) VALUES ('$num_serie','$nombre_material','$marca','$modelo','$estado','$observaciones','img/materiales/$imagen')";
 
                                     if (mysqli_query($conexion, $SQL)) {
-                                        echo "<div class='alert alert-success' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>Material insertado con éxito!</div>";
+                                        echo "<div class='alert alert-success' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>¡Material insertado con éxito!</div>";
                                     } else {
                                         echo "<div class='alert alert-danger' role='alert' style='width: 70%;margin: auto;margin-top: 2rem;text-align: center;'>El material no fue insertado por un error inesperado.</div>";
                                     }

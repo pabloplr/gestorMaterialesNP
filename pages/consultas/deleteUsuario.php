@@ -19,7 +19,7 @@
     if (!$cumplido) {
         $error = "Error al borrar el usuario seleccionado";
     }else{
-        header("Location: usuarios.php");
+        header("Location: usuarios.php?estado=borrado");
     }
 
 
