@@ -23,7 +23,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto ">
-                <li class="nav-item ml-2 active">
+                    <li class="nav-item ml-2 active">
                         <a class="nav-link" href="../peticiones/peticiones.php">Peticiones</a>
                     </li>
                     <li class="nav-item ml-2 active dropdown">
@@ -62,27 +62,27 @@
     <!-- aqui -->
     <div class="contieneAlerta text-center" style="width: 75%; margin: 0 auto;">
         <?php
-            if(isset($_GET['estado'])){
-                if($_GET['estado'] == 'actualizado'){
-                    echo '<div class="alert alert-primary text-center" role="alert">
+        if (isset($_GET['estado'])) {
+            if ($_GET['estado'] == 'actualizado') {
+                echo '<div class="alert alert-primary text-center" role="alert">
                     ¡Material actualizado con éxito!
                   </div>';
-                }elseif($_GET['estado'] == 'borrado'){
-                    echo '<div class="alert alert-danger text-center" role="alert">
+            } elseif ($_GET['estado'] == 'borrado') {
+                echo '<div class="alert alert-danger text-center" role="alert">
                     ¡Material borrado con éxito!
                   </div>';
-                }
-                echo "<script>
+            }
+            echo "<script>
                 setTimeout( () => { document.querySelector('.contieneAlerta').removeChild(document.querySelector('.alert')) }, 5000)    
             </script>";
-            }
+        }
         ?>
-        </div>
+    </div>
     <div class="container p-4">
         <div class="d-flex flex-row justify-content-between">
             <div>
                 <form class="form-inline my-2 my-lg-0 align-middle" action="./materiales.php" method="POST" class="form-inline">
-                    <input class="form-control mr-sm-2 border" type="search" placeholder="Buscar" aria-label="Search"id="num_serie" name="num_serie">
+                    <input class="form-control mr-sm-2 border" type="search" placeholder="Buscar" aria-label="Search" id="num_serie" name="num_serie">
                     <button class="btn  my-2 my-sm-0 btn-outline-primary btn-primary-np-blue" type="submit">Buscar</button>
                 </form>
             </div>
@@ -138,8 +138,7 @@
                                 <?php
                                 include '../../datosBBDD.php';
                                 error_reporting(0);
-                                // $conexionBD = mysqli_connect($servername, $username, $password, $database);
-                                // $consulta = mysqli_query($conexionBD, "SELECT * FROM materiales");
+
                                 $columna = obtenerTodos();
                                 for ($i = 0; $i < count($columna); $i++) {
                                     echo "<tr>";
@@ -153,42 +152,33 @@
                                     }
                                     echo "<td class='cell100 column5 p-1'>" . $columna[$i]["estado"] . "</td>";
                                     echo "<td class='cell100 column6 p-1'>" . $columna[$i]["nombre_materiales"] . "</td>";
-                                    echo "<td class='cell100 column7 p-1'><a href='../gestion/actualizar/actualizar-materiales.php?varId2=" . $columna[$i]["num_serie"] . "'><img src='../../img/editar.png'></a></td>";
+                                    echo "<td class='cell100 column7 p-1'><a href='../gestion/actualizar/actualizar-materiales.php?varId2=" .
+                                        $columna[$i]["num_serie"] . "'><img src='../../img/editar.png'></a></td>";
                                     echo "<td class='cell100 column7 p-1'><a href='deleteMaterial.php?varId=" . $columna[$i]["num_serie"] . "'><img src='../../img/delete.png'></a></td>";
                                     echo "</tr>";
                                 }
-                                // while ($columna = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
-                                //     echo "<tr>";
-                                //     echo "<td class='cell100 column1'>" . $columna["num_serie"] . "</td>";
-                                //     echo "<td class='cell100 column2'>" . $columna["marca"] . "</td>";
-                                //     echo "<td class='cell100 column3'>" . $columna["modelo"] . "</td>";
-                                //     echo "<td class='cell100 column4'><img src='../../" . $columna["ruta"] . "'></td>";
-                                //     echo "<td class='cell100 column5'>" . $columna["estado"] . "</td>";
-                                //     echo "<td class='cell100 column6'>" . $columna["nombre_materiales"] . "</td>";
-                                //     echo "<td class='cell100 column7'><a href=''><img src='../../img/editar.png'></a></td>";
-                                //     echo "<td class='cell100 column7'><a href='delete.php?varId=".$datos[$i]["id"]."'><img src='../../img/delete.png'></a></td>";
-                                //     echo "</tr>";
-                                // }
 
-                                function obtenerTodos(){
+
+                                function obtenerTodos()
+                                {
                                     include '../../datosBBDD.php';
                                     $datos =  [];
                                     $conexionBD = mysqli_connect($servername, $username, $password, $database);
                                     if (isset($_POST['num_serie'])) {
                                         $num_serie = $_POST['num_serie'];
-                                        if($_POST['num_serie'] == ''){
+                                        if ($_POST['num_serie'] == '') {
                                             $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
-                                        }else{
+                                        } else {
                                             $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock' AND num_serie = '$num_serie'";
                                         }
-                                    } else  if(isset($_POST['tipo_filtro'])){
+                                    } else  if (isset($_POST['tipo_filtro'])) {
                                         $tipo_filtro = $_POST['tipo_filtro'];
-                                        if($_POST['tipo_filtro'] == 'todo'){
+                                        if ($_POST['tipo_filtro'] == 'todo') {
                                             $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
-                                        }else{
+                                        } else {
                                             $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock' AND nombre_materiales = '$tipo_filtro'";
                                         }
-                                    } else  {
+                                    } else {
                                         $SQL = "SELECT num_serie, marca, modelo, nombre_materiales FROM materiales WHERE estado = 'stock'";
                                     }
 

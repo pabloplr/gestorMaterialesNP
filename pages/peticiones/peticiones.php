@@ -65,11 +65,11 @@
                 echo '<div class="alert alert-primary text-center" role="alert">
                     ¡Material entregado con éxito!
                   </div>';
-            }elseif($_GET['estado'] == 'fallo'){
+            } elseif ($_GET['estado'] == 'fallo') {
                 echo '<div class="alert alert-danger text-center" role="alert">
                 Nº máximo de préstamos realizado, devuelve algún material para continuar.
               </div>';
-            }elseif($_GET['estado'] == 'rechazado'){
+            } elseif ($_GET['estado'] == 'rechazado') {
                 echo '<div class="alert alert-danger text-center" role="alert">
                 Petición rechazada. Se eliminó de la base de datos.
               </div>';
@@ -99,24 +99,32 @@
                     </thead>
                     <tbody>
                         <?php
-                            include '../../datosBBDD.php';
-                            error_reporting(0);
-                            $conn = new mysqli($servername, $username, $password, $database);
-                            $sql = "SELECT * FROM peticiones";
-                            $consulta = mysqli_query($conn, $sql);
-                                    while ($dato = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
-                                        echo "<tr>";
-                                        echo "<td>". $dato['dni'] ."</td>";
-                                        echo "<td>". $dato['nombre'] ."</td>";
-                                        echo "<td>". $dato['num_serie'] ."</td>";
-                                        echo "<td>". $dato['marca'] ."</td>";
-                                        echo "<td>". $dato['modelo'] ."</td>";
-                                        // Hay que comprobar si el material esta en stock // Comprobar cuantos materiales tiene el usuario con ese dni
-                                        echo "<td><a class='btn btn-outline-primary m-auto' href='./aceptaPeticion.php?varId=" . $dato['num_serie'] . "&dni=" . $dato['dni'] . "'>Aceptar</a></td>";
-                                        echo "<td><a class='btn btn-outline-danger m-auto' href='./rechazaPeticion.php?varId=" . $dato['num_serie'] . "&dni=" . $dato['dni'] . "'>Rechazar</a></td>";
-                                        echo "</tr>";
-                                        
-                                    }
+                        include '../../datosBBDD.php';
+                        error_reporting(0);
+                        $conn = new mysqli($servername, $username, $password, $database);
+                        $sql = "SELECT * FROM peticiones";
+                        $consulta = mysqli_query($conn, $sql);
+                        while ($dato = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
+
+                            // Consulto el estado del material, si es prestado borro la consulta.
+                            $sqlEstado = "SELECT estado FROM materiales WHERE num_serie = '" . $dato['num_serie'] . "'";
+                            $consultaEstado = mysqli_query($conn, $sqlEstado);
+                            $estado = mysqli_fetch_assoc($consultaEstado);
+                            echo "<tr>";
+                            echo "<td>" . $dato['dni'] . "</td>";
+                            echo "<td>" . $dato['nombre'] . "</td>";
+                            echo "<td>" . $dato['num_serie'] . "</td>";
+                            echo "<td>" . $dato['marca'] . "</td>";
+                            echo "<td>" . $dato['modelo'] . "</td>";
+                            if ($estado['estado'] == 'stock') {
+                                // Hay que comprobar si el material esta en stock // Comprobar cuantos materiales tiene el usuario con ese dni
+                                echo "<td><a class='btn btn-outline-primary m-auto' href='./aceptaPeticion.php?varId=" . $dato['num_serie'] . "&dni=" . $dato['dni'] . "'>Aceptar</a></td>";
+                                echo "<td><a class='btn btn-outline-danger m-auto' href='./rechazaPeticion.php?varId=" . $dato['num_serie'] . "&dni=" . $dato['dni'] . "'>Rechazar</a></td>";
+                            } else {
+                                echo "<td colspan='2'><a style='width: 80%' class='btn btn-outline-danger m-auto' href='./rechazaPeticion.php?varId=" . $dato['num_serie'] . "&dni=" . $dato['dni'] . "'>Rechazar</a></td>";
+                            }
+                            echo "</tr>";
+                        }
 
 
                         ?>
@@ -126,50 +134,50 @@
         </div>
     </div>
 
-        <footer class="site-footer ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h6>Dirección</h6>
-                        <p class="text-justify">Calle Isabela, 1, 41013 Sevilla</p>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <h6>Teléfono</h6>
-                        <p class="text-justify">954 23 03 73</p>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <h6>Correo</h6>
-                        <p class="text-justify">info@fpnuevasprofesiones.es</p>
-                    </div>
+    <footer class="site-footer ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h6>Dirección</h6>
+                    <p class="text-justify">Calle Isabela, 1, 41013 Sevilla</p>
                 </div>
-                <hr>
-            </div>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-sm-6 col-xs-12">
-                        <p class="copyright-text">Copyright &copy; 2021
-                            <a href="https://fpnuevasprofesiones.es/">Nuevas Profesiones.com</a>.
-                        </p>
-                    </div>
+                <div class="col-lg-4">
+                    <h6>Teléfono</h6>
+                    <p class="text-justify">954 23 03 73</p>
+                </div>
 
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <ul class="social-icons">
-                            <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
-                            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a class="dribbble" href="#"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
+                <div class="col-lg-4">
+                    <h6>Correo</h6>
+                    <p class="text-justify">info@fpnuevasprofesiones.es</p>
                 </div>
             </div>
-        </footer>
+            <hr>
+        </div>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2021
+                        <a href="https://fpnuevasprofesiones.es/">Nuevas Profesiones.com</a>.
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="dribbble" href="#"><i class="fab fa-dribbble"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
